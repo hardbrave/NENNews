@@ -16,14 +16,28 @@
 #import "NENNewsPostCell.h"
 #import "NENNewsViewController.h"
 #import "NENNewsContent.h"
+#import "NENNewsCommentMaskView.h"
+#import "CommonDef.h"
 
 @interface NENNewsCommentController ()
-@property (weak, nonatomic) IBOutlet UITableView *tableView;
+@property (nonatomic, weak) IBOutlet UITableView *tableView;
 @property (nonatomic, copy) NSArray *normalPostFrames;
 @property (nonatomic, copy) NSArray *hotPostFrames;
+@property (nonatomic, strong) NENNewsCommentMaskView *maskView;
 @end
 
 @implementation NENNewsCommentController
+#pragma mark - 懒加载方法
+- (NENNewsCommentMaskView *)maskView
+{
+    if (!_maskView) {
+        NENNewsCommentMaskView *maskView = [NENNewsCommentMaskView maskView];
+        maskView.frame = CGRectMake(0, 44, kNENScreenW, 88);
+        [self.tableView addSubview:maskView];
+        self.maskView = maskView;
+    }
+    return _maskView;
+}
 
 #pragma mark - 系统方法
 - (void)viewDidLoad
@@ -45,24 +59,7 @@
     return;
 #endif
     
-    [NENHttpTool get:self.hotUrl params:nil success:^(NSDictionary *responseObj) {
-        NENNewsHotComment *hotComment = [NENNewsHotComment hotCommentWithDict:responseObj];
-        NSArray *posts = hotComment.hotPosts;
-        self.hotPostFrames = [self postFramesWithPosts:posts];
-        [self.tableView reloadData];
-    } failure:^(NSError *error) {
-        NSLog(@"网络错误");
-    }];
-    
-    [NENHttpTool get:self.normalUrl params:nil success:^(NSDictionary *responseObj) {
-        NENNewsNormalComment *newsComment = [NENNewsNormalComment normalCommentWithDict:responseObj];
-        NSArray *posts = newsComment.newsPosts;
-        self.normalPostFrames = [self postFramesWithPosts:posts];
-        [self.tableView reloadData];
-    } failure:^(NSError *error) {
-        NSLog(@"网络错误");
-    }];
-    
+    [self loadComments];
 }
 
 #pragma mark - 监听方法
@@ -118,12 +115,12 @@
             NSLog(@"网络错误");
         }];
     };
+    
     if (section == 0) {
         cell.postFrame = self.hotPostFrames[row];
     } else {
         cell.postFrame = self.normalPostFrames[row];
     }
-    
     
     return cell;
 }
@@ -152,6 +149,14 @@
     
 }
 
+- (void)tableView:(UITableView *)tableView willDisplayHeaderView:(UIView *)view forSection:(NSInteger)section
+{
+    if (section == 1) {
+        // 保证maskView显示在headerView的上面
+        self.maskView.type = NENNewsCommentLoadingTypeLoading;
+    }
+}
+
 #pragma mark - 其他方法
 /**
  *  将post数组转换为postFrame数组
@@ -165,6 +170,51 @@
         [normalPostFrames addObject:postFrame];
     }];
     return normalPostFrames;
+}
+
+#warning 此函数代码感觉有点重复，后续想办法优化
+- (void)loadComments
+{
+    __block BOOL isAnyCompleted = NO;
+    // 加载最热评论
+    [NENHttpTool get:self.hotUrl params:nil success:^(NSDictionary *responseObj) {
+        NENNewsHotComment *hotComment = [NENNewsHotComment hotCommentWithDict:responseObj];
+        NSArray *posts = hotComment.hotPosts;
+        self.hotPostFrames = [self postFramesWithPosts:posts];
+        if (isAnyCompleted) {
+            [self.maskView removeFromSuperview];
+            [self.tableView reloadData];
+        } else {
+            isAnyCompleted = YES;
+        }
+        
+    } failure:^(NSError *error) {
+        if (isAnyCompleted) {
+            self.maskView.type = NENNewsCommentLoadingTypeFailed;
+        } else {
+            isAnyCompleted = YES;
+        }
+    }];
+    
+    // 加载最新评论
+    [NENHttpTool get:self.normalUrl params:nil success:^(NSDictionary *responseObj) {
+        NENNewsNormalComment *newsComment = [NENNewsNormalComment normalCommentWithDict:responseObj];
+        NSArray *posts = newsComment.newsPosts;
+        self.normalPostFrames = [self postFramesWithPosts:posts];
+        if (isAnyCompleted) {
+            [self.maskView removeFromSuperview];
+            [self.tableView reloadData];
+        } else {
+            isAnyCompleted = YES;
+        }
+    } failure:^(NSError *error) {
+        if (isAnyCompleted) {
+            self.maskView.type = NENNewsCommentLoadingTypeFailed;
+        } else {
+            isAnyCompleted = YES;
+        }
+    }];
+
 }
 
 @end
