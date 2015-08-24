@@ -719,7 +719,6 @@
 		37926B811B77399B00FCB89B = {
 			isa = PBXGroup;
 			children = (
-				37ADBC891B8483BB002C7657 /* libicucore.dylib */,
 				37926B8C1B77399B00FCB89B /* 高仿网易新闻客户端 */,
 				37926BA61B77399B00FCB89B /* 高仿网易新闻客户端Tests */,
 				37926B8B1B77399B00FCB89B /* Products */,
@@ -747,6 +746,7 @@
 		37926B8D1B77399B00FCB89B /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				37ADBC891B8483BB002C7657 /* libicucore.dylib */,
 				37AE814A1B7E12D800F13DAC /* NewsGroup.plist */,
 				37926C2E1B788E9500FCB89B /* Images.xcassets */,
 				37926C001B7773D000FCB89B /* NewsURLs.plist */,
