@@ -18,6 +18,7 @@
 #import "NENNewsContent.h"
 #import "NENNewsCommentMaskView.h"
 #import "CommonDef.h"
+#import "MBProgressHUD+MJ.h"
 
 @interface NENNewsCommentController ()
 @property (nonatomic, weak) IBOutlet UITableView *tableView;
@@ -112,7 +113,7 @@
             
             [weakCommentVC.tableView reloadRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
         } failure:^(NSError *error) {
-            NSLog(@"网络错误");
+            [MBProgressHUD showError:@"加载失败"];
         }];
     };
     

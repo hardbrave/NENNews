@@ -17,6 +17,7 @@
 #import "NSString+reply.h"
 #import "NENNewsContent.h"
 #import "NENNewsCommentController.h"
+#import "MBProgressHUD+MJ.h"
 
 #define KNENNewsPhotosetCellID       @"photosetCell"
 
@@ -62,11 +63,11 @@
             }
 
         } failure:^(NSError *error) {
-            NSLog(@"%@", error);
+            [MBProgressHUD showError:@"网络错误"];
         }];
         
     } failure:^(NSError *error) {
-        NSLog(@"%@", error);
+        [MBProgressHUD showError:@"网络错误"];
     }];
 
 }

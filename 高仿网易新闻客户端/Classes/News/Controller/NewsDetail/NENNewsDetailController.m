@@ -17,6 +17,7 @@
 #import "NENNewsCommentController.h"
 #import "NENNewsContent.h"
 #import "NSString+reply.h"
+#import "MBProgressHUD+MJ.h"
 
 @interface NENNewsDetailController ()
 @property (nonatomic, weak) IBOutlet UILabel *replyLabel;
@@ -40,7 +41,7 @@
         self.newsDetail = [NENNewsDetail objectWithKeyValues:response[key]];
         [self.webView loadHTMLString:[self htmlString] baseURL:nil];
     } failure:^(NSError *error) {
-        NSLog(@"%@", error);
+        [MBProgressHUD showError:@"网络错误"];
     }];
 
     

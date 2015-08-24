@@ -26,13 +26,14 @@
     switch (type) {
         case NENNewsCommentLoadingTypeLoading:
         {
+            self.indicatorView.hidden = NO;
             [self.indicatorView startAnimating];
             self.titleLabel.text = @"跟帖正在加载中";
             break;
         }
         case NENNewsCommentLoadingTypeFailed:
         {
-            [self.indicatorView stopAnimating];
+            self.indicatorView.hidden = YES;
             self.titleLabel.text = @"跟帖加载失败";
             break;
         }

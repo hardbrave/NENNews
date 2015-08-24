@@ -19,6 +19,7 @@
 #import "NENNewsViewController.h"
 #import "NENNewsDetailController.h"
 #import "NENNewsPhotosetController.h"
+#import "MBProgressHUD+MJ.h"
 
 @interface NENNewsContentController () <NENContentHeaderDelegate>
 @property (nonatomic, strong) NSMutableArray *newsContents;
@@ -99,12 +100,10 @@
                     }
                 }
             }
-
-
             [self.tableView reloadData];
             [self.tableView.header endRefreshing];
         } failure:^(NSError *error) {
-            NSLog(@"%@", error);
+            [MBProgressHUD showError:@"网络错误"];
             [self.tableView.header endRefreshing];
         }];
     }];
