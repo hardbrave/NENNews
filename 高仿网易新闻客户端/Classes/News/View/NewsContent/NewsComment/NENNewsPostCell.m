@@ -203,6 +203,14 @@
     // 引用评论
     self.quotePostsView.frame = postFrame.quotePostsViewF;
     __weak NENNewsPostCell *weakPostCell = self;
+    self.quotePostsView.showAllContentBlock = ^{
+        // 重新计算frame
+        NENNewsPost *post = weakPostCell.postFrame.post;
+        weakPostCell.postFrame.post = post;
+        if (weakPostCell.showAllContentBlock) {
+            weakPostCell.showAllContentBlock();
+        }
+    };
     self.quotePostsView.showAllFloorBlock = ^{
         if (weakPostCell.showAllFloorBlock)
         {

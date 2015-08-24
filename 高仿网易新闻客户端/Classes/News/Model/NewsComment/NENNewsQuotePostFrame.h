@@ -32,6 +32,7 @@
 @property (nonatomic, assign) CGRect nameLabelF;
 @property (nonatomic, assign) CGRect floorLabelF;
 @property (nonatomic, assign) CGRect contentLabelF;
-@property (nonatomic, assign) CGRect showBtnF;
+@property (nonatomic, assign) CGRect expandBtnF;
+@property (nonatomic, assign) CGRect showAllBtnF;
 @property (nonatomic, assign) CGRect PostViewF;
 @end

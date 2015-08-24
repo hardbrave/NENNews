@@ -17,6 +17,7 @@
 @implementation NENNewsQuotePostsView
 
 #define kNENNewsQuoteMaxEmbedNum    4
+#define kNENNewsQuoteContentMaxH    120
 
 #pragma mark - 属性方法
 - (void)setPosts:(NSArray *)posts
@@ -51,13 +52,13 @@
         
         // 如果是隐藏楼层
         if (post.isHidden) {
-            CGFloat showBtnX = 0;
-            CGFloat showBtnY = padding;
-            CGFloat showBtnW = postViewW;
-            CGFloat showBtnH = kNENQuotePostShowBtnH;
-            postFrame.showBtnF = CGRectMake(showBtnX, showBtnY, showBtnW, showBtnH);
+            CGFloat expandBtnX = 0;
+            CGFloat expandBtnY = padding;
+            CGFloat expandBtnW = postViewW;
+            CGFloat expandBtnH = kNENQuotePostShowBtnH;
+            postFrame.expandBtnF = CGRectMake(expandBtnX, expandBtnY, expandBtnW, expandBtnH);
             
-            CGFloat postViewH = CGRectGetMaxY(postFrame.showBtnF);
+            CGFloat postViewH = CGRectGetMaxY(postFrame.expandBtnF);
             postFrame.PostViewF = CGRectMake(postViewX, postViewY, postViewW, postViewH);
             
             [postFrames addObject:postFrame];
@@ -77,17 +78,34 @@
         CGFloat nameW = postViewW - nameX - floorSize.width - kNENQuotePostMarginH - 3;
         CGSize nameSize = [post.name sizeWithFont:kNENQuotePostNameFont];
         postFrame.nameLabelF = CGRectMake(nameX, nameY, nameW, nameSize.height);
-        
+
+        CGFloat postViewH = 0;
         CGFloat contentX = kNENQuotePostMarginH;
         CGFloat contentY = CGRectGetMaxY(postFrame.nameLabelF) + kNENQuotePostMarginV;
         CGFloat contentMaxW = postViewW - 2 * kNENQuotePostMarginH;
+        CGFloat contentMaxH = kNENNewsQuoteContentMaxH;
         CGSize contentSize = [post.attributeBody sizeWithMaxW:contentMaxW];
       //  CGSize contentSize = [post.body sizeWithFont:kNENQuotePostContentFont maxW:(postViewW - 2 * kNENQuotePostMarginH)];
-        postFrame.contentLabelF = (CGRect){{contentX, contentY}, contentSize};
+        if (!post.showAll && contentSize.height > contentMaxH) {
+            contentSize.height = contentMaxH;
+            postFrame.contentLabelF = (CGRect){{contentX, contentY}, contentSize};
+            // 显示全部按钮frame
+            CGFloat showAllW = 72;
+            CGFloat showAllH = 15;
+            CGFloat showAllY = CGRectGetMaxY(postFrame.contentLabelF) + kNENQuotePostMarginV;
+            CGFloat showAllX = postViewW - kNENQuotePostMarginH - showAllW;
+            postFrame.showAllBtnF = CGRectMake(showAllX, showAllY, showAllW, showAllH);
+            //postView 高度
+            postViewH = CGRectGetMaxY(postFrame.showAllBtnF) + 8 + kNENQuotePostMarginV;
+        } else {
+            postFrame.contentLabelF = (CGRect){{contentX, contentY}, contentSize};
+            // 显示全部按钮
+            postFrame.showAllBtnF = CGRectMake(0, 0, 0, 0);
+            //postView 高度
+            postViewH = CGRectGetMaxY(postFrame.contentLabelF) + kNENQuotePostMarginV;
+        }
         
-        CGFloat postViewH = CGRectGetMaxY(postFrame.contentLabelF) + kNENQuotePostMarginV;
         postFrame.PostViewF = CGRectMake(postViewX, postViewY, postViewW, postViewH);
-        
         [postFrames addObject:postFrame];
         
         quoteHeight = postViewH;
@@ -100,6 +118,7 @@
             postView.hidden = NO;
             postView.postFrame = postFrames[postCount - idx - 1];
             postView.showAllFloorBlock = self.showAllFloorBlock;
+            postView.showAllContentBlock = self.showAllContentBlock;
         } else {
             postView.hidden = YES;
         }
@@ -141,12 +160,23 @@
         CGFloat nameY = padding + kNENQuotePostMarginV;
         CGSize nameSize = [post.name sizeWithFont:kNENQuotePostNameFont];
         
+        CGFloat postViewH = 0;
         CGFloat contentY = nameY + nameSize.height + kNENQuotePostMarginV;
+        CGFloat contentMaxH = kNENNewsQuoteContentMaxH;
         CGFloat contentMaxW = postViewW - 2 * kNENQuotePostMarginH;
         CGSize contentSize = [post.attributeBody sizeWithMaxW:contentMaxW];
        // CGSize contentSize = [post.body sizeWithFont:kNENQuotePostContentFont maxW:(postViewW - 2 * kNENQuotePostMarginH)];
-        
-        CGFloat postViewH = contentY + contentSize.height + kNENQuotePostMarginV;
+        if (!post.showAll && contentSize.height > contentMaxH) {
+            contentSize.height = contentMaxH;
+            // 显示全部按钮f
+            CGFloat showAllH = 15;
+            CGFloat showAllY = contentY + contentMaxH + kNENQuotePostMarginV;
+            //postView 高度
+            postViewH = showAllY + showAllH + 8 + kNENQuotePostMarginV;
+        } else {
+            //postView 高度
+            postViewH = contentY + contentSize.height + kNENQuotePostMarginV;
+        }
         
         quoteHeight = postViewH;
         

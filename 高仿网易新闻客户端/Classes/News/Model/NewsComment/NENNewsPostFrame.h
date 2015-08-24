@@ -17,7 +17,7 @@
 #define kNENPostTimeFont        [UIFont systemFontOfSize:11]
 
 #define kNENPostIconWH      30
-#define kNENPostContentMaxH 100
+#define kNENPostContentMaxH 120
 
 // 距离外边框的水平间距
 #define kNENPostPaddingH    8

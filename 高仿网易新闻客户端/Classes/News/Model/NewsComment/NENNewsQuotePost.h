@@ -19,6 +19,8 @@
 @property (nonatomic, copy) NSString *body;
 // 带属性的内容
 @property (nonatomic, copy) NSAttributedString *attributeBody;
+// 是否显示了全部内容
+@property (nonatomic, assign, getter=isShowAll) BOOL showAll;
 // 点赞数
 @property (nonatomic, copy) NSString *vote;
 // 时间

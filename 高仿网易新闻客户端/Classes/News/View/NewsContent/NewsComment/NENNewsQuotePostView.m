@@ -18,7 +18,8 @@
 @property (nonatomic, strong) UILabel *nameLabel;
 @property (nonatomic, strong) UILabel *floorLabel;
 @property (nonatomic, strong) UILabel *contentLabel;
-@property (nonatomic, strong) UIButton *showBtn;
+@property (nonatomic, strong) UIButton *showAllBtn;
+@property (nonatomic, strong) UIButton *expandBtn;
 @end
 
 @implementation NENNewsQuotePostView
@@ -54,30 +55,49 @@
         [self addSubview:contentLabel];
         self.contentLabel = contentLabel;
         
+        // 显示全部内容按钮
+        UIButton *showAllBtn = [[UIButton alloc] init];
+        [showAllBtn setImage:[UIImage imageNamed:@"comment_showall"] forState:UIControlStateNormal];
+        [showAllBtn addTarget:self action:@selector(showAllBtnClick) forControlEvents:UIControlEventTouchUpInside];
+        [self addSubview:showAllBtn];
+        self.showAllBtn = showAllBtn;
+        
         // 展开按钮
-        UIButton *showBtn = [[UIButton alloc] init];
+        UIButton *expandBtn = [[UIButton alloc] init];
         NSString *btnTitle = @"展开隐藏楼层";
         UIFont *btnFont = [UIFont systemFontOfSize:15];
-        showBtn.titleLabel.font = btnFont;
-        [showBtn setTitleColor:[UIColor grayColor] forState:UIControlStateNormal];
-        [showBtn setImage:[UIImage imageNamed:@"comment_arrow_down"] forState:UIControlStateNormal];
-        [showBtn setTitle:btnTitle forState:UIControlStateNormal];
-        [showBtn addTarget:self action:@selector(showBtnClick) forControlEvents:UIControlEventTouchUpInside];
+        expandBtn.titleLabel.font = btnFont;
+        [expandBtn setTitleColor:[UIColor grayColor] forState:UIControlStateNormal];
+        [expandBtn setImage:[UIImage imageNamed:@"comment_arrow_down"] forState:UIControlStateNormal];
+        [expandBtn setTitle:btnTitle forState:UIControlStateNormal];
+        [expandBtn addTarget:self action:@selector(expandBtnClick) forControlEvents:UIControlEventTouchUpInside];
         CGFloat labelWidth = [btnTitle sizeWithFont:btnFont].width;
         CGFloat imageWidth = 12;
-        showBtn.imageEdgeInsets = UIEdgeInsetsMake(0, labelWidth, 0, -labelWidth);
-        showBtn.titleEdgeInsets = UIEdgeInsetsMake(0, -imageWidth, 0, imageWidth);
-        [self addSubview:showBtn];
-        self.showBtn = showBtn;
+        expandBtn.imageEdgeInsets = UIEdgeInsetsMake(0, labelWidth, 0, -labelWidth);
+        expandBtn.titleEdgeInsets = UIEdgeInsetsMake(0, -imageWidth, 0, imageWidth);
+        [self addSubview:expandBtn];
+        self.expandBtn = expandBtn;
     }
     return self;
 }
 
 #pragma mark - 监听方法
-- (void)showBtnClick
+- (void)expandBtnClick
 {
     if (self.showAllFloorBlock) {
         self.showAllFloorBlock();
+    }
+}
+
+- (void)showAllBtnClick
+{
+    // 重算一遍frame
+    NENNewsQuotePost *post = self.postFrame.post;
+    post.showAll = YES;
+    self.postFrame.post = post;
+    
+    if (self.showAllContentBlock) {
+        self.showAllContentBlock();
     }
 }
 
@@ -98,9 +118,12 @@
         // 内容
         self.contentLabel.hidden = YES;
         
+        // 显示全部按钮
+        self.showAllBtn.hidden = YES;
+        
         // 展开按钮
-        self.showBtn.hidden = NO;
-        self.showBtn.frame = postFrame.showBtnF;
+        self.expandBtn.hidden = NO;
+        self.expandBtn.frame = postFrame.expandBtnF;
 
     } else {
         // 名字
@@ -118,8 +141,12 @@
         self.contentLabel.attributedText = post.attributeBody;
         self.contentLabel.frame = postFrame.contentLabelF;
         
+        // 显示全部按钮
+        self.showAllBtn.hidden = NO;
+        self.showAllBtn.frame = postFrame.showAllBtnF;
+        
         // 展开按钮
-        self.showBtn.hidden = YES;
+        self.expandBtn.hidden = YES;
     }
     
     // 尺寸

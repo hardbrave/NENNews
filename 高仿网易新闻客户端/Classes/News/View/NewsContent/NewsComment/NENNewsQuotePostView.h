@@ -27,5 +27,6 @@
 
 @interface NENNewsQuotePostView : UIView
 @property (nonatomic, copy) void(^showAllFloorBlock)();
+@property (nonatomic, copy) void(^showAllContentBlock)();
 @property (nonatomic, strong) NENNewsQuotePostFrame *postFrame;
 @end
