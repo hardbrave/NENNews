@@ -20,7 +20,8 @@
 - (void)setImageUrl:(NSString *)imageUrl
 {
     _imageUrl = [imageUrl copy];
-    [self.imageView sd_setImageWithURL:[NSURL URLWithString:imageUrl]];
+    UIImage *placeholderImage = [UIImage imageNamed:@"photoview_image_default_white"];
+    [self.imageView sd_setImageWithURL:[NSURL URLWithString:imageUrl] placeholderImage:placeholderImage];
 }
 
 @end

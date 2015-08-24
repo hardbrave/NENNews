@@ -45,9 +45,10 @@
     }
     
     // 多图cell
-    [self.firstImageView sd_setImageWithURL:[NSURL URLWithString:newsContent.imgsrc]];
-    [self.secondeImageView sd_setImageWithURL:[NSURL URLWithString:newsContent.imgextra[0][@"imgsrc"]]];
-    [self.thirdImageView sd_setImageWithURL:[NSURL URLWithString:newsContent.imgextra[1][@"imgsrc"]]];
+    UIImage *placeholderImage = [UIImage imageNamed:@"photoview_image_default_white"];
+    [self.firstImageView sd_setImageWithURL:[NSURL URLWithString:newsContent.imgsrc] placeholderImage:placeholderImage];
+    [self.secondeImageView sd_setImageWithURL:[NSURL URLWithString:newsContent.imgextra[0][@"imgsrc"]] placeholderImage:placeholderImage];
+    [self.thirdImageView sd_setImageWithURL:[NSURL URLWithString:newsContent.imgextra[1][@"imgsrc"]] placeholderImage:placeholderImage];
     
 }
 

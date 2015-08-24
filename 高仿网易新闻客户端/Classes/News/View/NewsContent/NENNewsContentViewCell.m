@@ -30,7 +30,8 @@
 {
     [super setNewsContent:newsContent];
     
-    [self.imageIcon sd_setImageWithURL:[NSURL URLWithString:newsContent.imgsrc]];
+    UIImage *placeholderImage = [UIImage imageNamed:@"photoview_image_default_white"];
+    [self.imageIcon sd_setImageWithURL:[NSURL URLWithString:newsContent.imgsrc] placeholderImage:placeholderImage];
     self.titleLabel.text = newsContent.title;
     self.subtitleLabel.text = newsContent.digest;
     
