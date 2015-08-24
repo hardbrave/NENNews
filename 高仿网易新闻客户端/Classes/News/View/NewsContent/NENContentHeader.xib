@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="7706" systemVersion="14D136" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="yXQ-eP-9Ef" customClass="NENContentHeader">
+            <rect key="frame" x="0.0" y="0.0" width="352" height="217"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <subviews>
+                <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="dzj-HR-laj">
+                    <rect key="frame" x="0.0" y="0.0" width="352" height="185"/>
+                    <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
+                    <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="0.0" minimumInteritemSpacing="0.0" id="1vX-jG-vNP">
+                        <size key="itemSize" width="50" height="50"/>
+                        <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                        <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                        <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                    </collectionViewFlowLayout>
+                    <connections>
+                        <outlet property="dataSource" destination="yXQ-eP-9Ef" id="UnX-Qj-M9g"/>
+                        <outlet property="delegate" destination="yXQ-eP-9Ef" id="2eE-KJ-okY"/>
+                    </connections>
+                </collectionView>
+                <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="night_photoset_list_cell_icon" translatesAutoresizingMaskIntoConstraints="NO" id="ooX-G2-kXg">
+                    <rect key="frame" x="8" y="193" width="16" height="16"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="16" id="TvK-1h-Uq0"/>
+                        <constraint firstAttribute="height" constant="16" id="htF-Cq-3OB"/>
+                    </constraints>
+                </imageView>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Rez-J5-nTP">
+                    <rect key="frame" x="32" y="190" width="42" height="20.5"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <pageControl hidden="YES" opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="4" translatesAutoresizingMaskIntoConstraints="NO" id="YgV-hW-ZHQ">
+                    <rect key="frame" x="305" y="182" width="39" height="37"/>
+                    <color key="pageIndicatorTintColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                    <color key="currentPageIndicatorTintColor" cocoaTouchSystemColor="darkTextColor"/>
+                </pageControl>
+            </subviews>
+            <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
+            <constraints>
+                <constraint firstAttribute="trailing" secondItem="YgV-hW-ZHQ" secondAttribute="trailing" constant="8" id="46c-6d-gAe"/>
+                <constraint firstItem="ooX-G2-kXg" firstAttribute="centerY" secondItem="Rez-J5-nTP" secondAttribute="centerY" id="JG0-DJ-nVO"/>
+                <constraint firstAttribute="trailing" secondItem="dzj-HR-laj" secondAttribute="trailing" id="ULk-FU-WHT"/>
+                <constraint firstItem="dzj-HR-laj" firstAttribute="leading" secondItem="yXQ-eP-9Ef" secondAttribute="leading" id="gI7-Ye-urp"/>
+                <constraint firstItem="ooX-G2-kXg" firstAttribute="leading" secondItem="yXQ-eP-9Ef" secondAttribute="leading" constant="8" id="kxG-wB-lot"/>
+                <constraint firstItem="dzj-HR-laj" firstAttribute="top" secondItem="yXQ-eP-9Ef" secondAttribute="top" id="pKb-1B-3bi"/>
+                <constraint firstItem="Rez-J5-nTP" firstAttribute="leading" secondItem="ooX-G2-kXg" secondAttribute="trailing" constant="8" id="sOH-CO-Kcr"/>
+                <constraint firstAttribute="bottom" secondItem="dzj-HR-laj" secondAttribute="bottom" constant="32" id="tKJ-TP-pyx"/>
+                <constraint firstItem="ooX-G2-kXg" firstAttribute="top" secondItem="dzj-HR-laj" secondAttribute="bottom" constant="8" id="ump-Ku-PLk"/>
+                <constraint firstItem="YgV-hW-ZHQ" firstAttribute="centerY" secondItem="Rez-J5-nTP" secondAttribute="centerY" id="zqR-Q0-fUu"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <connections>
+                <outlet property="collView" destination="dzj-HR-laj" id="Z0e-cf-SEQ"/>
+                <outlet property="iconView" destination="ooX-G2-kXg" id="PEx-Sh-M9T"/>
+                <outlet property="pageControl" destination="YgV-hW-ZHQ" id="Jfe-YP-o3v"/>
+                <outlet property="titleLabel" destination="Rez-J5-nTP" id="0a1-Tb-3t2"/>
+            </connections>
+            <point key="canvasLocation" x="126" y="237"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="night_photoset_list_cell_icon" width="16" height="16"/>
+    </resources>
+</document>

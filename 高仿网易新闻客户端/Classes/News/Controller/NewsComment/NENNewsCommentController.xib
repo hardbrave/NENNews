@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="7706" systemVersion="14D136" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="NENNewsCommentController">
+            <connections>
+                <outlet property="tableView" destination="zsv-qi-aTm" id="pcP-bb-gb1"/>
+                <outlet property="view" destination="iN0-l3-epB" id="Zpu-LN-1yz"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eat-UY-MDq" userLabel="topBar">
+                    <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                    <subviews>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EVj-9I-3kZ" userLabel="backBtn">
+                            <rect key="frame" x="0.0" y="0.0" width="54" height="44"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="54" id="KCr-PO-iTf"/>
+                                <constraint firstAttribute="height" constant="44" id="Mj7-Uj-DB0"/>
+                            </constraints>
+                            <state key="normal" backgroundImage="night_icon_back">
+                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                            </state>
+                            <connections>
+                                <action selector="btnBtnClick:" destination="-1" eventType="touchUpInside" id="qnx-S4-8tg"/>
+                            </connections>
+                        </button>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="U0S-bf-tqM" userLabel="divider">
+                            <rect key="frame" x="0.0" y="43" width="375" height="1"/>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="1" id="E0s-7Z-UTc"/>
+                            </constraints>
+                        </view>
+                    </subviews>
+                    <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                    <constraints>
+                        <constraint firstItem="EVj-9I-3kZ" firstAttribute="top" secondItem="eat-UY-MDq" secondAttribute="top" id="3y2-Gs-T7V"/>
+                        <constraint firstItem="U0S-bf-tqM" firstAttribute="leading" secondItem="eat-UY-MDq" secondAttribute="leading" id="5cL-RN-vs5"/>
+                        <constraint firstAttribute="trailing" secondItem="U0S-bf-tqM" secondAttribute="trailing" id="6MP-Vc-KSh"/>
+                        <constraint firstAttribute="height" constant="44" id="EoH-My-5aU"/>
+                        <constraint firstAttribute="bottom" secondItem="U0S-bf-tqM" secondAttribute="bottom" id="euY-FM-6cp"/>
+                        <constraint firstItem="EVj-9I-3kZ" firstAttribute="leading" secondItem="eat-UY-MDq" secondAttribute="leading" id="g3c-fi-0nZ"/>
+                    </constraints>
+                </view>
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="zsv-qi-aTm">
+                    <rect key="frame" x="0.0" y="64" width="375" height="603"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <connections>
+                        <outlet property="dataSource" destination="-1" id="ZFC-ST-PT0"/>
+                        <outlet property="delegate" destination="-1" id="NZy-sN-WwC"/>
+                    </connections>
+                </tableView>
+            </subviews>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstItem="zsv-qi-aTm" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="3f2-H0-bnt"/>
+                <constraint firstItem="eat-UY-MDq" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="BFC-xy-JHZ"/>
+                <constraint firstAttribute="trailing" secondItem="eat-UY-MDq" secondAttribute="trailing" id="Cox-mL-4Gb"/>
+                <constraint firstAttribute="trailing" secondItem="zsv-qi-aTm" secondAttribute="trailing" id="Gdg-pU-ZyJ"/>
+                <constraint firstItem="zsv-qi-aTm" firstAttribute="top" secondItem="eat-UY-MDq" secondAttribute="bottom" id="HIl-rt-Yun"/>
+                <constraint firstAttribute="bottom" secondItem="zsv-qi-aTm" secondAttribute="bottom" id="fPJ-3c-FZ1"/>
+                <constraint firstItem="eat-UY-MDq" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="20" id="zoy-cV-Exu"/>
+            </constraints>
+            <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="night_icon_back" width="54" height="44"/>
+    </resources>
+</document>
