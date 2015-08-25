@@ -14,6 +14,7 @@
 #import "UIView+Frame.h"
 #import "CommonDef.h"
 #import "NSString+Font.h"
+#import "NENNewsContent.h"
 
 @interface NENNewsPostCell ()
 @property (nonatomic, strong) UIImageView *iconView;
@@ -107,13 +108,16 @@
     
     // 内容
     UILabel *contentLabel = [[UILabel alloc] init];
-    contentLabel.font = kNENPostContentFont;
     contentLabel.numberOfLines = 0;
     [self.contentView addSubview:contentLabel];
     self.contentLabel = contentLabel;
     
     // 显示全部按钮
     UIButton *showAllBtn = [[UIButton alloc] init];
+    [showAllBtn setImage:[UIImage imageNamed:@"comment_showall"] forState:UIControlStateNormal];
+    [showAllBtn addTarget:self action:@selector(showAllBtnClick) forControlEvents:UIControlEventTouchUpInside];
+    [self.contentView addSubview:showAllBtn];
+    self.showAllBtn = showAllBtn;
     
     // 分割线
     UIView *sepratorLine = [[UIView alloc] init];
@@ -132,6 +136,19 @@
     NENNewsQuotePostsView *quotePostsView = [[NENNewsQuotePostsView alloc] init];
     [self.contentView addSubview:quotePostsView];
     self.quotePostsView = quotePostsView;
+}
+
+#pragma mark - 监听方法
+- (void)showAllBtnClick
+{
+    // 重算一遍frame
+    NENNewsPost *post = self.postFrame.post;
+    post.showAll = YES;
+    self.postFrame.post = post;
+    
+    if (self.showAllContentBlock) {
+        self.showAllContentBlock();
+    }
 }
 
 #pragma mark - 属性方法
@@ -185,11 +202,34 @@
     
     // 引用评论
     self.quotePostsView.frame = postFrame.quotePostsViewF;
+    __weak NENNewsPostCell *weakPostCell = self;
+    self.quotePostsView.showAllContentBlock = ^{
+        // 重新计算frame
+        NENNewsPost *post = weakPostCell.postFrame.post;
+        weakPostCell.postFrame.post = post;
+        if (weakPostCell.showAllContentBlock) {
+            weakPostCell.showAllContentBlock();
+        }
+    };
+    self.quotePostsView.showAllFloorBlock = ^{
+        if (weakPostCell.showAllFloorBlock)
+        {
+            NSString *url = [NSString stringWithFormat:@"http://comment.api.163.com/api/json/post/load/%@/%@", weakPostCell.boardid, post.pi];
+            weakPostCell.showAllFloorBlock(url);
+        }
+    };
     self.quotePostsView.posts = post.quotePosts;
     
     // 内容
-    self.contentLabel.text = post.body;
+    self.contentLabel.attributedText = post.attributeBody;
     self.contentLabel.frame = postFrame.contentLabelF;
+    
+    if (!CGRectIsEmpty(postFrame.showAllBtnF)) {
+        self.showAllBtn.hidden = NO;
+        self.showAllBtn.frame = postFrame.showAllBtnF;
+    } else {
+        self.showAllBtn.hidden = YES;
+    }
 
 }
 

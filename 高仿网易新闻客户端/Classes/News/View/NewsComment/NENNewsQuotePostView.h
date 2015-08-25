@@ -25,6 +25,8 @@
 // 内部的垂直间距
 #define kNENQuotePostMarginH     8
 
-@interface NENNewsQuotePostView : UIImageView
+@interface NENNewsQuotePostView : UIView
+@property (nonatomic, copy) void(^showAllFloorBlock)();
+@property (nonatomic, copy) void(^showAllContentBlock)();
 @property (nonatomic, strong) NENNewsQuotePostFrame *postFrame;
 @end

@@ -61,54 +61,93 @@
     // 取消分割线
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     // 保证tableView在状态栏上方
-    self.tableView.contentInset = UIEdgeInsetsMake(0, 0, 49, 0);
+    self.tableView.contentInset = UIEdgeInsetsMake(0, 0, 44, 0);
     
-    // 设置刷新回调
-    self.tableView.header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
-        if (!self.newsGroup.url) {
-            return;
-        }
+    // 下拉刷新
+    self.tableView.header = [MJRefreshNormalHeader headerWithRefreshingTarget:self refreshingAction:@selector(loadNewData)];
+    
+    // 上拉刷新
+    self.tableView.footer = [MJRefreshAutoNormalFooter footerWithRefreshingTarget:self refreshingAction:@selector(loadMoreData)];
 
-        NSString *url = [NSString stringWithFormat:@"%@/0-140.html", self.newsGroup.url];
-        [NENHttpTool get:url params:nil success:^(NSDictionary *response) {
-            NSString *key = [response.keyEnumerator nextObject];
-            self.newsContents = [NENNewsContent objectArrayWithKeyValuesArray:response[key]];
+    // 开始刷新
+    [self.tableView.header beginRefreshing];
+}
 
-            if (self.newsContents.count >= 1) {
-                NENNewsContent *newsContent = self.newsContents[0];
-                if (newsContent.hasAD && newsContent.hasHead) {
-                    NENNewsAD *newsAD = [[NENNewsAD alloc] init];
-                    newsAD.title = newsContent.title;
-                    newsAD.subtitle = newsContent.subtitle;
-                    newsAD.imgsrc = newsContent.imgsrc;
-                    newsAD.url = newsContent.skipID;
-                    [self.newsAds addObject:newsAD];
-                    [self.newsContents removeObject:newsContent];
-                        
-                    // 请求滚动数据
-                    if (self.newsGroup.adUrl) {
-                        [NENHttpTool get:[NSString stringWithFormat:@"%@/0-3.html", self.newsGroup.adUrl] params:nil success:^(NSDictionary *response) {
-                            NSString *key = [response.keyEnumerator nextObject];
-                            NSMutableArray *newsADs = [NENNewsAD objectArrayWithKeyValuesArray:response[key]];
-                            [self.newsAds addObjectsFromArray:newsADs];
-                            self.contentHeader.newsADs = self.newsAds;
-                        } failure:^(NSError *error) {
-                            NSLog(@"%@", error);
-                        }];
-                    } else {
+#pragma mark - 监听方法
+- (void)loadNewData
+{
+    if (!self.newsGroup.url) {
+        return;
+    }
+    
+    NSString *url = [NSString stringWithFormat:@"%@/0-20.html", self.newsGroup.url];
+    [NENHttpTool get:url params:nil success:^(NSDictionary *response) {
+        NSString *key = [response.keyEnumerator nextObject];
+        self.newsContents = [NENNewsContent objectArrayWithKeyValuesArray:response[key]];
+        
+#warning 此处要改！！
+        if (self.newsContents.count >= 1) {
+            NENNewsContent *newsContent = self.newsContents[0];
+            if (newsContent.hasAD && newsContent.hasHead) {
+                NENNewsAD *newsAD = [[NENNewsAD alloc] init];
+                newsAD.title = newsContent.title;
+                newsAD.subtitle = newsContent.subtitle;
+                newsAD.imgsrc = newsContent.imgsrc;
+                newsAD.url = newsContent.skipID;
+                [self.newsAds addObject:newsAD];
+                [self.newsContents removeObject:newsContent];
+                
+                // 请求滚动数据
+                if (self.newsGroup.adUrl) {
+                    [NENHttpTool get:[NSString stringWithFormat:@"%@/0-3.html", self.newsGroup.adUrl] params:nil success:^(NSDictionary *response) {
+                        NSString *key = [response.keyEnumerator nextObject];
+                        NSMutableArray *newsADs = [NENNewsAD objectArrayWithKeyValuesArray:response[key]];
+                        [self.newsAds addObjectsFromArray:newsADs];
                         self.contentHeader.newsADs = self.newsAds;
-                    }
+                    } failure:^(NSError *error) {
+                        NSLog(@"%@", error);
+                    }];
+                } else {
+                    self.contentHeader.newsADs = self.newsAds;
                 }
             }
-            [self.tableView reloadData];
-            [self.tableView.header endRefreshing];
-        } failure:^(NSError *error) {
-            [MBProgressHUD showError:@"网络错误"];
-            [self.tableView.header endRefreshing];
-        }];
+        }
+        [self.tableView reloadData];
+        [self.tableView.header endRefreshing];
+    } failure:^(NSError *error) {
+        [MBProgressHUD showError:@"网络错误"];
+        [self.tableView.header endRefreshing];
     }];
+
+}
+
+- (void)loadMoreData
+{
+    if (!self.newsGroup.url) {
+        return;
+    }
     
-    [self.tableView.header beginRefreshing];
+    NSLog(@"%ld", self.newsContents.count);
+    NSString *url = [NSString stringWithFormat:@"%@/%ld-20.html", self.newsGroup.url, self.newsContents.count];
+    [NENHttpTool get:url params:nil success:^(NSDictionary *response) {
+        NSString *key = [response.keyEnumerator nextObject];
+        NSMutableArray *newsContents = [NENNewsContent objectArrayWithKeyValuesArray:response[key]];
+        // 返回的数据有可能大于20条，只取20条，要不然会导致后续请求请求不到数据
+        if (newsContents.count > 20) {
+            NSRange range;
+            range.location = 19;
+            range.length = newsContents.count - 20;
+            [newsContents removeObjectsInRange:range];
+        }
+        [self.newsContents addObjectsFromArray:newsContents];
+        
+        [self.tableView reloadData];
+        [self.tableView.footer endRefreshing];
+    } failure:^(NSError *error) {
+        [MBProgressHUD showError:@"网络错误"];
+        [self.tableView.footer endRefreshing];
+    }];
+
 }
 
 #pragma mark - UITableViewDataSource

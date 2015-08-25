@@ -14,6 +14,8 @@
 
 + (instancetype)cellWithTableView:(UITableView *)tableView;
 
+@property (nonatomic, copy) NSString *boardid;
 @property (nonatomic, strong) NENNewsPostFrame *postFrame;
-
+@property (nonatomic, copy) void(^showAllContentBlock)();
+@property (nonatomic, copy) void(^showAllFloorBlock)(NSString *url);
 @end

@@ -7,6 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3701A7D21B8C16C200E0D325 /* NENNewsCommentMaskView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3701A7C81B8C16C200E0D325 /* NENNewsCommentMaskView.m */; };
+		3701A7D31B8C16C200E0D325 /* NENNewsCommentMaskView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3701A7C91B8C16C200E0D325 /* NENNewsCommentMaskView.xib */; };
+		3701A7D41B8C16C200E0D325 /* NENNewsCommentSectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3701A7CB1B8C16C200E0D325 /* NENNewsCommentSectionView.m */; };
+		3701A7D51B8C16C200E0D325 /* NENNewsPostCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3701A7CD1B8C16C200E0D325 /* NENNewsPostCell.m */; };
+		3701A7D61B8C16C200E0D325 /* NENNewsQuotePostsView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3701A7CF1B8C16C200E0D325 /* NENNewsQuotePostsView.m */; };
+		3701A7D71B8C16C200E0D325 /* NENNewsQuotePostView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3701A7D11B8C16C200E0D325 /* NENNewsQuotePostView.m */; };
+		3701A7D91B8C171200E0D325 /* libicucore.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 3701A7D81B8C171200E0D325 /* libicucore.dylib */; };
 		371DB8861B7AFF9F00063F64 /* NENContentViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 371DB8841B7AFF9F00063F64 /* NENContentViewCell.m */; };
 		371DB8B81B7B69C200063F64 /* MJRefreshAutoFooter.m in Sources */ = {isa = PBXBuildFile; fileRef = 371DB88E1B7B69C200063F64 /* MJRefreshAutoFooter.m */; };
 		371DB8B91B7B69C200063F64 /* MJRefreshBackFooter.m in Sources */ = {isa = PBXBuildFile; fileRef = 371DB8901B7B69C200063F64 /* MJRefreshBackFooter.m */; };
@@ -60,15 +67,9 @@
 		371DB9281B7B759C00063F64 /* NENImagesContentViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 371DB9271B7B759C00063F64 /* NENImagesContentViewCell.xib */; };
 		371DB92C1B7DE28600063F64 /* NENHttpTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 371DB92B1B7DE28600063F64 /* NENHttpTool.m */; };
 		373FF5781B83535E0023619A /* NENNewsDetail.css in Resources */ = {isa = PBXBuildFile; fileRef = 373FF5771B83535E0023619A /* NENNewsDetail.css */; };
-		375A9A571B8B156C00749371 /* NENNewsCommentMaskView.m in Sources */ = {isa = PBXBuildFile; fileRef = 375A9A561B8B156C00749371 /* NENNewsCommentMaskView.m */; };
-		375A9A5D1B8B1E7700749371 /* NENNewsCommentMaskView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 375A9A5C1B8B1E7700749371 /* NENNewsCommentMaskView.xib */; };
 		375A9A6D1B8B405F00749371 /* MBProgressHUD+MJ.m in Sources */ = {isa = PBXBuildFile; fileRef = 375A9A691B8B405F00749371 /* MBProgressHUD+MJ.m */; };
 		375A9A6E1B8B405F00749371 /* MBProgressHUD.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 375A9A6A1B8B405F00749371 /* MBProgressHUD.bundle */; };
 		375A9A6F1B8B405F00749371 /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 375A9A6C1B8B405F00749371 /* MBProgressHUD.m */; };
-		376128121B86CCD500CC354F /* NENNewsCommentSectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3761280B1B86CCD500CC354F /* NENNewsCommentSectionView.m */; };
-		376128131B86CCD500CC354F /* NENNewsPostCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3761280D1B86CCD500CC354F /* NENNewsPostCell.m */; };
-		376128141B86CCD500CC354F /* NENNewsQuotePostsView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3761280F1B86CCD500CC354F /* NENNewsQuotePostsView.m */; };
-		376128151B86CCD500CC354F /* NENNewsQuotePostView.m in Sources */ = {isa = PBXBuildFile; fileRef = 376128111B86CCD500CC354F /* NENNewsQuotePostView.m */; };
 		3761281A1B86CD1600CC354F /* NENNewsPhotosetCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 376128181B86CD1600CC354F /* NENNewsPhotosetCell.m */; };
 		3761281B1B86CD1600CC354F /* NENNewsPhotosetCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 376128191B86CD1600CC354F /* NENNewsPhotosetCell.xib */; };
 		376128291B86CD3600CC354F /* NENNewsHotComment.m in Sources */ = {isa = PBXBuildFile; fileRef = 3761281E1B86CD3600CC354F /* NENNewsHotComment.m */; };
@@ -118,7 +119,6 @@
 		37926C2A1B7851F500FCB89B /* NSString+MJExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 37926C221B7851F500FCB89B /* NSString+MJExtension.m */; };
 		37926C2F1B788E9500FCB89B /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 37926C2E1B788E9500FCB89B /* Images.xcassets */; };
 		37ADBC881B84835E002C7657 /* RegexKitLite.m in Sources */ = {isa = PBXBuildFile; fileRef = 37ADBC871B84835E002C7657 /* RegexKitLite.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
-		37ADBC8A1B8483BB002C7657 /* libicucore.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 37ADBC891B8483BB002C7657 /* libicucore.dylib */; };
 		37ADBC8F1B8497C5002C7657 /* NSDate+time.m in Sources */ = {isa = PBXBuildFile; fileRef = 37ADBC8E1B8497C5002C7657 /* NSDate+time.m */; };
 		37AE814B1B7E12D800F13DAC /* NewsGroup.plist in Resources */ = {isa = PBXBuildFile; fileRef = 37AE814A1B7E12D800F13DAC /* NewsGroup.plist */; };
 		37AE814F1B7E1E9000F13DAC /* NENNewsConst.m in Sources */ = {isa = PBXBuildFile; fileRef = 37AE814E1B7E1E9000F13DAC /* NENNewsConst.m */; };
@@ -149,6 +149,18 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		3701A7C71B8C16C200E0D325 /* NENNewsCommentMaskView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NENNewsCommentMaskView.h; sourceTree = "<group>"; };
+		3701A7C81B8C16C200E0D325 /* NENNewsCommentMaskView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NENNewsCommentMaskView.m; sourceTree = "<group>"; };
+		3701A7C91B8C16C200E0D325 /* NENNewsCommentMaskView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NENNewsCommentMaskView.xib; sourceTree = "<group>"; };
+		3701A7CA1B8C16C200E0D325 /* NENNewsCommentSectionView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NENNewsCommentSectionView.h; sourceTree = "<group>"; };
+		3701A7CB1B8C16C200E0D325 /* NENNewsCommentSectionView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NENNewsCommentSectionView.m; sourceTree = "<group>"; };
+		3701A7CC1B8C16C200E0D325 /* NENNewsPostCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NENNewsPostCell.h; sourceTree = "<group>"; };
+		3701A7CD1B8C16C200E0D325 /* NENNewsPostCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NENNewsPostCell.m; sourceTree = "<group>"; };
+		3701A7CE1B8C16C200E0D325 /* NENNewsQuotePostsView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NENNewsQuotePostsView.h; sourceTree = "<group>"; };
+		3701A7CF1B8C16C200E0D325 /* NENNewsQuotePostsView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NENNewsQuotePostsView.m; sourceTree = "<group>"; };
+		3701A7D01B8C16C200E0D325 /* NENNewsQuotePostView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NENNewsQuotePostView.h; sourceTree = "<group>"; };
+		3701A7D11B8C16C200E0D325 /* NENNewsQuotePostView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NENNewsQuotePostView.m; sourceTree = "<group>"; };
+		3701A7D81B8C171200E0D325 /* libicucore.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libicucore.dylib; path = usr/lib/libicucore.dylib; sourceTree = SDKROOT; };
 		371DB8831B7AFF9F00063F64 /* NENContentViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NENContentViewCell.h; sourceTree = "<group>"; };
 		371DB8841B7AFF9F00063F64 /* NENContentViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NENContentViewCell.m; sourceTree = "<group>"; };
 		371DB88D1B7B69C200063F64 /* MJRefreshAutoFooter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MJRefreshAutoFooter.h; sourceTree = "<group>"; };
@@ -253,22 +265,11 @@
 		371DB92A1B7DE28600063F64 /* NENHttpTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NENHttpTool.h; sourceTree = "<group>"; };
 		371DB92B1B7DE28600063F64 /* NENHttpTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NENHttpTool.m; sourceTree = "<group>"; };
 		373FF5771B83535E0023619A /* NENNewsDetail.css */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.css; path = NENNewsDetail.css; sourceTree = "<group>"; };
-		375A9A551B8B156C00749371 /* NENNewsCommentMaskView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NENNewsCommentMaskView.h; sourceTree = "<group>"; };
-		375A9A561B8B156C00749371 /* NENNewsCommentMaskView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NENNewsCommentMaskView.m; sourceTree = "<group>"; };
-		375A9A5C1B8B1E7700749371 /* NENNewsCommentMaskView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NENNewsCommentMaskView.xib; sourceTree = "<group>"; };
 		375A9A681B8B405F00749371 /* MBProgressHUD+MJ.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "MBProgressHUD+MJ.h"; sourceTree = "<group>"; };
 		375A9A691B8B405F00749371 /* MBProgressHUD+MJ.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "MBProgressHUD+MJ.m"; sourceTree = "<group>"; };
 		375A9A6A1B8B405F00749371 /* MBProgressHUD.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = MBProgressHUD.bundle; sourceTree = "<group>"; };
 		375A9A6B1B8B405F00749371 /* MBProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MBProgressHUD.h; sourceTree = "<group>"; };
 		375A9A6C1B8B405F00749371 /* MBProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MBProgressHUD.m; sourceTree = "<group>"; };
-		3761280A1B86CCD500CC354F /* NENNewsCommentSectionView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NENNewsCommentSectionView.h; sourceTree = "<group>"; };
-		3761280B1B86CCD500CC354F /* NENNewsCommentSectionView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NENNewsCommentSectionView.m; sourceTree = "<group>"; };
-		3761280C1B86CCD500CC354F /* NENNewsPostCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NENNewsPostCell.h; sourceTree = "<group>"; };
-		3761280D1B86CCD500CC354F /* NENNewsPostCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NENNewsPostCell.m; sourceTree = "<group>"; };
-		3761280E1B86CCD500CC354F /* NENNewsQuotePostsView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NENNewsQuotePostsView.h; sourceTree = "<group>"; };
-		3761280F1B86CCD500CC354F /* NENNewsQuotePostsView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NENNewsQuotePostsView.m; sourceTree = "<group>"; };
-		376128101B86CCD500CC354F /* NENNewsQuotePostView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NENNewsQuotePostView.h; sourceTree = "<group>"; };
-		376128111B86CCD500CC354F /* NENNewsQuotePostView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NENNewsQuotePostView.m; sourceTree = "<group>"; };
 		376128171B86CD1600CC354F /* NENNewsPhotosetCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NENNewsPhotosetCell.h; sourceTree = "<group>"; };
 		376128181B86CD1600CC354F /* NENNewsPhotosetCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NENNewsPhotosetCell.m; sourceTree = "<group>"; };
 		376128191B86CD1600CC354F /* NENNewsPhotosetCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NENNewsPhotosetCell.xib; sourceTree = "<group>"; };
@@ -364,7 +365,6 @@
 		37926C2E1B788E9500FCB89B /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		37ADBC861B84835E002C7657 /* RegexKitLite.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RegexKitLite.h; sourceTree = "<group>"; };
 		37ADBC871B84835E002C7657 /* RegexKitLite.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RegexKitLite.m; sourceTree = "<group>"; };
-		37ADBC891B8483BB002C7657 /* libicucore.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libicucore.dylib; path = usr/lib/libicucore.dylib; sourceTree = SDKROOT; };
 		37ADBC8D1B8497C5002C7657 /* NSDate+time.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDate+time.h"; sourceTree = "<group>"; };
 		37ADBC8E1B8497C5002C7657 /* NSDate+time.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDate+time.m"; sourceTree = "<group>"; };
 		37AE814A1B7E12D800F13DAC /* NewsGroup.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = NewsGroup.plist; sourceTree = "<group>"; };
@@ -402,7 +402,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				37ADBC8A1B8483BB002C7657 /* libicucore.dylib in Frameworks */,
+				3701A7D91B8C171200E0D325 /* libicucore.dylib in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -416,6 +416,24 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		3701A7C61B8C16C200E0D325 /* NewsComment */ = {
+			isa = PBXGroup;
+			children = (
+				3701A7C71B8C16C200E0D325 /* NENNewsCommentMaskView.h */,
+				3701A7C81B8C16C200E0D325 /* NENNewsCommentMaskView.m */,
+				3701A7C91B8C16C200E0D325 /* NENNewsCommentMaskView.xib */,
+				3701A7CA1B8C16C200E0D325 /* NENNewsCommentSectionView.h */,
+				3701A7CB1B8C16C200E0D325 /* NENNewsCommentSectionView.m */,
+				3701A7CC1B8C16C200E0D325 /* NENNewsPostCell.h */,
+				3701A7CD1B8C16C200E0D325 /* NENNewsPostCell.m */,
+				3701A7CE1B8C16C200E0D325 /* NENNewsQuotePostsView.h */,
+				3701A7CF1B8C16C200E0D325 /* NENNewsQuotePostsView.m */,
+				3701A7D01B8C16C200E0D325 /* NENNewsQuotePostView.h */,
+				3701A7D11B8C16C200E0D325 /* NENNewsQuotePostView.m */,
+			);
+			path = NewsComment;
+			sourceTree = "<group>";
+		};
 		371DB8821B7AFF7700063F64 /* NewsContent */ = {
 			isa = PBXGroup;
 			children = (
@@ -620,24 +638,6 @@
 			path = MBProgressHUD;
 			sourceTree = "<group>";
 		};
-		376128091B86CCD500CC354F /* NewsComment */ = {
-			isa = PBXGroup;
-			children = (
-				3761280A1B86CCD500CC354F /* NENNewsCommentSectionView.h */,
-				3761280B1B86CCD500CC354F /* NENNewsCommentSectionView.m */,
-				3761280C1B86CCD500CC354F /* NENNewsPostCell.h */,
-				3761280D1B86CCD500CC354F /* NENNewsPostCell.m */,
-				3761280E1B86CCD500CC354F /* NENNewsQuotePostsView.h */,
-				3761280F1B86CCD500CC354F /* NENNewsQuotePostsView.m */,
-				376128101B86CCD500CC354F /* NENNewsQuotePostView.h */,
-				376128111B86CCD500CC354F /* NENNewsQuotePostView.m */,
-				375A9A551B8B156C00749371 /* NENNewsCommentMaskView.h */,
-				375A9A561B8B156C00749371 /* NENNewsCommentMaskView.m */,
-			);
-			name = NewsComment;
-			path = NewsContent/NewsComment;
-			sourceTree = "<group>";
-		};
 		376128161B86CD1600CC354F /* NewsDetail */ = {
 			isa = PBXGroup;
 			children = (
@@ -746,7 +746,6 @@
 		37926B811B77399B00FCB89B = {
 			isa = PBXGroup;
 			children = (
-				375A9A5C1B8B1E7700749371 /* NENNewsCommentMaskView.xib */,
 				37926B8C1B77399B00FCB89B /* 高仿网易新闻客户端 */,
 				37926BA61B77399B00FCB89B /* 高仿网易新闻客户端Tests */,
 				37926B8B1B77399B00FCB89B /* Products */,
@@ -774,7 +773,7 @@
 		37926B8D1B77399B00FCB89B /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				37ADBC891B8483BB002C7657 /* libicucore.dylib */,
+				3701A7D81B8C171200E0D325 /* libicucore.dylib */,
 				37AE814A1B7E12D800F13DAC /* NewsGroup.plist */,
 				37926C2E1B788E9500FCB89B /* Images.xcassets */,
 				37926C001B7773D000FCB89B /* NewsURLs.plist */,
@@ -967,10 +966,10 @@
 		37926BC61B773A9900FCB89B /* View */ = {
 			isa = PBXGroup;
 			children = (
+				3701A7C61B8C16C200E0D325 /* NewsComment */,
 				37D482D81B8014D30057F819 /* NewsGroup */,
 				371DB8821B7AFF7700063F64 /* NewsContent */,
 				376128161B86CD1600CC354F /* NewsDetail */,
-				376128091B86CCD500CC354F /* NewsComment */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -1233,9 +1232,9 @@
 			files = (
 				37EDD2531B81B5D700813D79 /* NENContentHeaderCell.xib in Resources */,
 				37EDD2511B81B0CF00813D79 /* NENContentHeader.xib in Resources */,
+				3701A7D31B8C16C200E0D325 /* NENNewsCommentMaskView.xib in Resources */,
 				375A9A6E1B8B405F00749371 /* MBProgressHUD.bundle in Resources */,
 				37926C011B7773D000FCB89B /* NewsURLs.plist in Resources */,
-				375A9A5D1B8B1E7700749371 /* NENNewsCommentMaskView.xib in Resources */,
 				371DB9241B7B754500063F64 /* NENNewsContentViewCell.xib in Resources */,
 				371DB9281B7B759C00063F64 /* NENImagesContentViewCell.xib in Resources */,
 				3761285C1B86CEC000CC354F /* NENNewsDetailController.xib in Resources */,
@@ -1267,6 +1266,7 @@
 			files = (
 				371DB9191B7B6A1A00063F64 /* AFURLSessionManager.m in Sources */,
 				375A9A6D1B8B405F00749371 /* MBProgressHUD+MJ.m in Sources */,
+				3701A7D61B8C16C200E0D325 /* NENNewsQuotePostsView.m in Sources */,
 				371DB8C01B7B69C200063F64 /* MJRefreshBackGifFooter.m in Sources */,
 				371DB9151B7B6A1A00063F64 /* AFSecurityPolicy.m in Sources */,
 				376128431B86CDCC00CC354F /* NENPhotoDetail.m in Sources */,
@@ -1280,9 +1280,10 @@
 				371DB9181B7B6A1A00063F64 /* AFURLResponseSerialization.m in Sources */,
 				371DB8C91B7B69C200063F64 /* UIScrollView+MJRefresh.m in Sources */,
 				3761282A1B86CD3600CC354F /* NENNewsNormalComment.m in Sources */,
-				376128151B86CCD500CC354F /* NENNewsQuotePostView.m in Sources */,
 				37926BE61B7742D500FCB89B /* NENDiscoverViewController.m in Sources */,
 				37D482ED1B8014D30057F819 /* NENNewsGroupEditButton.m in Sources */,
+				3701A7D41B8C16C200E0D325 /* NENNewsCommentSectionView.m in Sources */,
+				3701A7D21B8C16C200E0D325 /* NENNewsCommentMaskView.m in Sources */,
 				37D482EE1B8014D30057F819 /* NENNewsGroupListBackItem.m in Sources */,
 				37926C071B777AC800FCB89B /* NSString+Font.m in Sources */,
 				371DB8BB1B7B69C200063F64 /* MJRefreshFooter.m in Sources */,
@@ -1292,6 +1293,7 @@
 				371DB8861B7AFF9F00063F64 /* NENContentViewCell.m in Sources */,
 				371DB8C81B7B69C200063F64 /* UIScrollView+MJExtension.m in Sources */,
 				376128731B872DCF00CC354F /* NENNewsPostFrame.m in Sources */,
+				3701A7D51B8C16C200E0D325 /* NENNewsPostCell.m in Sources */,
 				371DB8ED1B7B69F600063F64 /* MKAnnotationView+WebCache.m in Sources */,
 				371DB8B81B7B69C200063F64 /* MJRefreshAutoFooter.m in Sources */,
 				37D482D71B7EADC60057F819 /* NENNewsGroupTool.m in Sources */,
@@ -1319,7 +1321,6 @@
 				37D482EB1B8014D30057F819 /* NENNewsGroupDropdownListView.m in Sources */,
 				3761282E1B86CD3600CC354F /* NENNewsQuotePostFrame.m in Sources */,
 				371DB9111B7B6A1A00063F64 /* AFHTTPRequestOperation.m in Sources */,
-				375A9A571B8B156C00749371 /* NENNewsCommentMaskView.m in Sources */,
 				371DB8FB1B7B69F600063F64 /* UIImageView+WebCache.m in Sources */,
 				3761282B1B86CD3600CC354F /* NENNewsPost.m in Sources */,
 				371DB8B91B7B69C200063F64 /* MJRefreshBackFooter.m in Sources */,
@@ -1332,8 +1333,8 @@
 				371DB8F11B7B69F600063F64 /* SDWebImageDecoder.m in Sources */,
 				376128581B86CEC000CC354F /* NENNewsCommentController.m in Sources */,
 				371DB9131B7B6A1A00063F64 /* AFHTTPSessionManager.m in Sources */,
-				376128141B86CCD500CC354F /* NENNewsQuotePostsView.m in Sources */,
 				37926C281B7851F500FCB89B /* NSObject+MJKeyValue.m in Sources */,
+				3701A7D71B8C16C200E0D325 /* NENNewsQuotePostView.m in Sources */,
 				37ADBC881B84835E002C7657 /* RegexKitLite.m in Sources */,
 				37926BD71B773B1700FCB89B /* NENTabBarController.m in Sources */,
 				371DB9161B7B6A1A00063F64 /* AFURLConnectionOperation.m in Sources */,
@@ -1353,7 +1354,6 @@
 				376128401B86CDCC00CC354F /* NENNewsContent.m in Sources */,
 				371DB8F91B7B69F600063F64 /* UIImage+WebP.m in Sources */,
 				371DB9141B7B6A1A00063F64 /* AFNetworkReachabilityManager.m in Sources */,
-				376128121B86CCD500CC354F /* NENNewsCommentSectionView.m in Sources */,
 				37926C251B7851F500FCB89B /* MJProperty.m in Sources */,
 				371DB8EF1B7B69F600063F64 /* SDImageCache.m in Sources */,
 				37926C261B7851F500FCB89B /* MJType.m in Sources */,
@@ -1373,7 +1373,6 @@
 				37ADBC8F1B8497C5002C7657 /* NSDate+time.m in Sources */,
 				371DB9121B7B6A1A00063F64 /* AFHTTPRequestOperationManager.m in Sources */,
 				37926C241B7851F500FCB89B /* MJFoundation.m in Sources */,
-				376128131B86CCD500CC354F /* NENNewsPostCell.m in Sources */,
 				37D482EA1B8014D30057F819 /* NENNewsGroupDropdownButton.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

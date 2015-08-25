@@ -10,5 +10,7 @@
 
 @interface NENNewsQuotePostsView : UIView
 @property (nonatomic, strong) NSArray *posts;
+@property (nonatomic, copy) void(^showAllFloorBlock)();
+@property (nonatomic, copy) void(^showAllContentBlock)();
 + (CGFloat)heightWithPosts:(NSArray *)posts width:(CGFloat)width;
 @end
