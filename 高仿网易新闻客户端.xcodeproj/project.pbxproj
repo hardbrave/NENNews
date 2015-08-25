@@ -14,6 +14,13 @@
 		3701A7D61B8C16C200E0D325 /* NENNewsQuotePostsView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3701A7CF1B8C16C200E0D325 /* NENNewsQuotePostsView.m */; };
 		3701A7D71B8C16C200E0D325 /* NENNewsQuotePostView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3701A7D11B8C16C200E0D325 /* NENNewsQuotePostView.m */; };
 		3701A7D91B8C171200E0D325 /* libicucore.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 3701A7D81B8C171200E0D325 /* libicucore.dylib */; };
+		3701A7E61B8C178300E0D325 /* FMDatabase.m in Sources */ = {isa = PBXBuildFile; fileRef = 3701A7DC1B8C178300E0D325 /* FMDatabase.m */; };
+		3701A7E71B8C178300E0D325 /* FMDatabaseAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 3701A7DE1B8C178300E0D325 /* FMDatabaseAdditions.m */; };
+		3701A7E81B8C178300E0D325 /* FMDatabasePool.m in Sources */ = {isa = PBXBuildFile; fileRef = 3701A7E01B8C178300E0D325 /* FMDatabasePool.m */; };
+		3701A7E91B8C178300E0D325 /* FMDatabaseQueue.m in Sources */ = {isa = PBXBuildFile; fileRef = 3701A7E21B8C178300E0D325 /* FMDatabaseQueue.m */; };
+		3701A7EA1B8C178300E0D325 /* FMResultSet.m in Sources */ = {isa = PBXBuildFile; fileRef = 3701A7E51B8C178300E0D325 /* FMResultSet.m */; };
+		3701A7EC1B8C179200E0D325 /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 3701A7EB1B8C179200E0D325 /* libsqlite3.dylib */; };
+		3701A7EF1B8C186200E0D325 /* NENNewsContentTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 3701A7EE1B8C186200E0D325 /* NENNewsContentTool.m */; };
 		371DB8861B7AFF9F00063F64 /* NENContentViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 371DB8841B7AFF9F00063F64 /* NENContentViewCell.m */; };
 		371DB8B81B7B69C200063F64 /* MJRefreshAutoFooter.m in Sources */ = {isa = PBXBuildFile; fileRef = 371DB88E1B7B69C200063F64 /* MJRefreshAutoFooter.m */; };
 		371DB8B91B7B69C200063F64 /* MJRefreshBackFooter.m in Sources */ = {isa = PBXBuildFile; fileRef = 371DB8901B7B69C200063F64 /* MJRefreshBackFooter.m */; };
@@ -107,7 +114,6 @@
 		37926BF21B77432400FCB89B /* NENMediaViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 37926BF11B77432400FCB89B /* NENMediaViewController.m */; };
 		37926BF51B774F2D00FCB89B /* NENNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 37926BF41B774F2D00FCB89B /* NENNavigationController.m */; };
 		37926BFE1B77522300FCB89B /* NENDiscoverViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 37926BFD1B77522300FCB89B /* NENDiscoverViewController.xib */; };
-		37926C011B7773D000FCB89B /* NewsURLs.plist in Resources */ = {isa = PBXBuildFile; fileRef = 37926C001B7773D000FCB89B /* NewsURLs.plist */; };
 		37926C071B777AC800FCB89B /* NSString+Font.m in Sources */ = {isa = PBXBuildFile; fileRef = 37926C061B777AC800FCB89B /* NSString+Font.m */; };
 		37926C231B7851F500FCB89B /* MJExtensionConst.m in Sources */ = {isa = PBXBuildFile; fileRef = 37926C141B7851F500FCB89B /* MJExtensionConst.m */; };
 		37926C241B7851F500FCB89B /* MJFoundation.m in Sources */ = {isa = PBXBuildFile; fileRef = 37926C161B7851F500FCB89B /* MJFoundation.m */; };
@@ -161,6 +167,20 @@
 		3701A7D01B8C16C200E0D325 /* NENNewsQuotePostView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NENNewsQuotePostView.h; sourceTree = "<group>"; };
 		3701A7D11B8C16C200E0D325 /* NENNewsQuotePostView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NENNewsQuotePostView.m; sourceTree = "<group>"; };
 		3701A7D81B8C171200E0D325 /* libicucore.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libicucore.dylib; path = usr/lib/libicucore.dylib; sourceTree = SDKROOT; };
+		3701A7DB1B8C178300E0D325 /* FMDatabase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMDatabase.h; sourceTree = "<group>"; };
+		3701A7DC1B8C178300E0D325 /* FMDatabase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMDatabase.m; sourceTree = "<group>"; };
+		3701A7DD1B8C178300E0D325 /* FMDatabaseAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMDatabaseAdditions.h; sourceTree = "<group>"; };
+		3701A7DE1B8C178300E0D325 /* FMDatabaseAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMDatabaseAdditions.m; sourceTree = "<group>"; };
+		3701A7DF1B8C178300E0D325 /* FMDatabasePool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMDatabasePool.h; sourceTree = "<group>"; };
+		3701A7E01B8C178300E0D325 /* FMDatabasePool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMDatabasePool.m; sourceTree = "<group>"; };
+		3701A7E11B8C178300E0D325 /* FMDatabaseQueue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMDatabaseQueue.h; sourceTree = "<group>"; };
+		3701A7E21B8C178300E0D325 /* FMDatabaseQueue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMDatabaseQueue.m; sourceTree = "<group>"; };
+		3701A7E31B8C178300E0D325 /* FMDB.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMDB.h; sourceTree = "<group>"; };
+		3701A7E41B8C178300E0D325 /* FMResultSet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMResultSet.h; sourceTree = "<group>"; };
+		3701A7E51B8C178300E0D325 /* FMResultSet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMResultSet.m; sourceTree = "<group>"; };
+		3701A7EB1B8C179200E0D325 /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = usr/lib/libsqlite3.dylib; sourceTree = SDKROOT; };
+		3701A7ED1B8C186200E0D325 /* NENNewsContentTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NENNewsContentTool.h; sourceTree = "<group>"; };
+		3701A7EE1B8C186200E0D325 /* NENNewsContentTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NENNewsContentTool.m; sourceTree = "<group>"; };
 		371DB8831B7AFF9F00063F64 /* NENContentViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NENContentViewCell.h; sourceTree = "<group>"; };
 		371DB8841B7AFF9F00063F64 /* NENContentViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NENContentViewCell.m; sourceTree = "<group>"; };
 		371DB88D1B7B69C200063F64 /* MJRefreshAutoFooter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MJRefreshAutoFooter.h; sourceTree = "<group>"; };
@@ -342,7 +362,6 @@
 		37926BF41B774F2D00FCB89B /* NENNavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NENNavigationController.m; sourceTree = "<group>"; };
 		37926BFD1B77522300FCB89B /* NENDiscoverViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NENDiscoverViewController.xib; sourceTree = "<group>"; };
 		37926BFF1B7764A900FCB89B /* CommonDef.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CommonDef.h; sourceTree = "<group>"; };
-		37926C001B7773D000FCB89B /* NewsURLs.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = NewsURLs.plist; sourceTree = "<group>"; };
 		37926C051B777AC800FCB89B /* NSString+Font.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+Font.h"; sourceTree = "<group>"; };
 		37926C061B777AC800FCB89B /* NSString+Font.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+Font.m"; sourceTree = "<group>"; };
 		37926C121B7851F500FCB89B /* MJExtension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MJExtension.h; sourceTree = "<group>"; };
@@ -402,6 +421,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3701A7EC1B8C179200E0D325 /* libsqlite3.dylib in Frameworks */,
 				3701A7D91B8C171200E0D325 /* libicucore.dylib in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -432,6 +452,24 @@
 				3701A7D11B8C16C200E0D325 /* NENNewsQuotePostView.m */,
 			);
 			path = NewsComment;
+			sourceTree = "<group>";
+		};
+		3701A7DA1B8C178300E0D325 /* fmdb */ = {
+			isa = PBXGroup;
+			children = (
+				3701A7DB1B8C178300E0D325 /* FMDatabase.h */,
+				3701A7DC1B8C178300E0D325 /* FMDatabase.m */,
+				3701A7DD1B8C178300E0D325 /* FMDatabaseAdditions.h */,
+				3701A7DE1B8C178300E0D325 /* FMDatabaseAdditions.m */,
+				3701A7DF1B8C178300E0D325 /* FMDatabasePool.h */,
+				3701A7E01B8C178300E0D325 /* FMDatabasePool.m */,
+				3701A7E11B8C178300E0D325 /* FMDatabaseQueue.h */,
+				3701A7E21B8C178300E0D325 /* FMDatabaseQueue.m */,
+				3701A7E31B8C178300E0D325 /* FMDB.h */,
+				3701A7E41B8C178300E0D325 /* FMResultSet.h */,
+				3701A7E51B8C178300E0D325 /* FMResultSet.m */,
+			);
+			path = fmdb;
 			sourceTree = "<group>";
 		};
 		371DB8821B7AFF7700063F64 /* NewsContent */ = {
@@ -773,10 +811,10 @@
 		37926B8D1B77399B00FCB89B /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				3701A7EB1B8C179200E0D325 /* libsqlite3.dylib */,
 				3701A7D81B8C171200E0D325 /* libicucore.dylib */,
 				37AE814A1B7E12D800F13DAC /* NewsGroup.plist */,
 				37926C2E1B788E9500FCB89B /* Images.xcassets */,
-				37926C001B7773D000FCB89B /* NewsURLs.plist */,
 				37926B8E1B77399B00FCB89B /* Info.plist */,
 				37926B8F1B77399B00FCB89B /* main.m */,
 			);
@@ -895,6 +933,7 @@
 		37926BBD1B773A9900FCB89B /* Lib */ = {
 			isa = PBXGroup;
 			children = (
+				3701A7DA1B8C178300E0D325 /* fmdb */,
 				375A9A671B8B405F00749371 /* MBProgressHUD */,
 				37ADBC851B84835E002C7657 /* RegexKitLite */,
 				371DB8FD1B7B6A1A00063F64 /* AFNetworking */,
@@ -1123,6 +1162,8 @@
 			children = (
 				37D482D51B7EADC60057F819 /* NENNewsGroupTool.h */,
 				37D482D61B7EADC60057F819 /* NENNewsGroupTool.m */,
+				3701A7ED1B8C186200E0D325 /* NENNewsContentTool.h */,
+				3701A7EE1B8C186200E0D325 /* NENNewsContentTool.m */,
 			);
 			path = Tool;
 			sourceTree = "<group>";
@@ -1234,7 +1275,6 @@
 				37EDD2511B81B0CF00813D79 /* NENContentHeader.xib in Resources */,
 				3701A7D31B8C16C200E0D325 /* NENNewsCommentMaskView.xib in Resources */,
 				375A9A6E1B8B405F00749371 /* MBProgressHUD.bundle in Resources */,
-				37926C011B7773D000FCB89B /* NewsURLs.plist in Resources */,
 				371DB9241B7B754500063F64 /* NENNewsContentViewCell.xib in Resources */,
 				371DB9281B7B759C00063F64 /* NENImagesContentViewCell.xib in Resources */,
 				3761285C1B86CEC000CC354F /* NENNewsDetailController.xib in Resources */,
@@ -1279,6 +1319,7 @@
 				37926BE01B77410500FCB89B /* UIView+Frame.m in Sources */,
 				371DB9181B7B6A1A00063F64 /* AFURLResponseSerialization.m in Sources */,
 				371DB8C91B7B69C200063F64 /* UIScrollView+MJRefresh.m in Sources */,
+				3701A7E61B8C178300E0D325 /* FMDatabase.m in Sources */,
 				3761282A1B86CD3600CC354F /* NENNewsNormalComment.m in Sources */,
 				37926BE61B7742D500FCB89B /* NENDiscoverViewController.m in Sources */,
 				37D482ED1B8014D30057F819 /* NENNewsGroupEditButton.m in Sources */,
@@ -1293,6 +1334,7 @@
 				371DB8861B7AFF9F00063F64 /* NENContentViewCell.m in Sources */,
 				371DB8C81B7B69C200063F64 /* UIScrollView+MJExtension.m in Sources */,
 				376128731B872DCF00CC354F /* NENNewsPostFrame.m in Sources */,
+				3701A7EF1B8C186200E0D325 /* NENNewsContentTool.m in Sources */,
 				3701A7D51B8C16C200E0D325 /* NENNewsPostCell.m in Sources */,
 				371DB8ED1B7B69F600063F64 /* MKAnnotationView+WebCache.m in Sources */,
 				371DB8B81B7B69C200063F64 /* MJRefreshAutoFooter.m in Sources */,
@@ -1310,6 +1352,7 @@
 				3761285D1B86CEC000CC354F /* NENNewsPhotosetController.m in Sources */,
 				3761285A1B86CEC000CC354F /* NENNewsContentController.m in Sources */,
 				37D482F01B8014D30057F819 /* NENNewsGroupTitleLabel.m in Sources */,
+				3701A7E91B8C178300E0D325 /* FMDatabaseQueue.m in Sources */,
 				371DB8C11B7B69C200063F64 /* MJRefreshBackNormalFooter.m in Sources */,
 				371DB8C51B7B69C200063F64 /* MJRefreshStateHeader.m in Sources */,
 				37AE814F1B7E1E9000F13DAC /* NENNewsConst.m in Sources */,
@@ -1363,12 +1406,15 @@
 				371DB91C1B7B73DF00063F64 /* NENNewsContentViewCell.m in Sources */,
 				37D482D31B7E3E350057F819 /* Foundation+Log.m in Sources */,
 				371DB8EE1B7B69F600063F64 /* NSData+ImageContentType.m in Sources */,
+				3701A7E81B8C178300E0D325 /* FMDatabasePool.m in Sources */,
 				371DB8CA1B7B69C200063F64 /* UIView+MJExtension.m in Sources */,
 				371DB8F71B7B69F600063F64 /* UIImage+GIF.m in Sources */,
 				371DB8BE1B7B69C200063F64 /* MJRefreshAutoNormalFooter.m in Sources */,
+				3701A7E71B8C178300E0D325 /* FMDatabaseAdditions.m in Sources */,
 				37926BD41B773A9900FCB89B /* AppDelegate.m in Sources */,
 				371DB8BA1B7B69C200063F64 /* MJRefreshComponent.m in Sources */,
 				37926C2A1B7851F500FCB89B /* NSString+MJExtension.m in Sources */,
+				3701A7EA1B8C178300E0D325 /* FMResultSet.m in Sources */,
 				376128441B86CDCC00CC354F /* NENPhotoSet.m in Sources */,
 				37ADBC8F1B8497C5002C7657 /* NSDate+time.m in Sources */,
 				371DB9121B7B6A1A00063F64 /* AFHTTPRequestOperationManager.m in Sources */,

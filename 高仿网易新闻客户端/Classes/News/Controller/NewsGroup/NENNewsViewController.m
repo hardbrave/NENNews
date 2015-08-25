@@ -22,6 +22,7 @@
 #import "NENNewsDetailController.h"
 #import "NENNavigationController.h"
 #import "NENNewsConst.h"
+#import "NENHttpTool.h"
 
 #define kNENNewsGroupBarH                   40
 #define kNENNewsGroupDropdownBtnW           40
@@ -108,6 +109,40 @@
     
     // 默认选中第一个新闻分组
     [self.newsGroupBar selectIndex:0];
+    
+    // 5秒后更新newsGroup列表
+    [NSTimer scheduledTimerWithTimeInterval:5 target:self selector:@selector(updateNewsGroupList) userInfo:nil repeats:NO];
+}
+
+#pragma mark - 监听方法
+- (void)updateNewsGroupList
+{
+    [NENHttpTool get:@"http://c.m.163.com/nc/topicset/ios/subscribe/manage/listspecial.html" params:nil success:^(NSDictionary *responseObj) {
+        NSArray *groupList = responseObj[@"tList"];
+        // 将本地列表与最新列表做比对，往本地列表中添加不存在的项
+        [groupList enumerateObjectsUsingBlock:^(NSDictionary *dict, NSUInteger idx, BOOL *stop) {
+            __block BOOL found = NO;
+            [self.newsGroups enumerateObjectsUsingBlock:^(NENNewsGroup *newsGroup, NSUInteger idx, BOOL *stop) {
+                if ([newsGroup.tid isEqualToString:dict[@"tid"]]) {
+                    *stop = YES;
+                    found = YES;
+                }
+            }];
+            if (!found) {
+                NENNewsGroup *newsGroup = [[NENNewsGroup alloc] init];
+                newsGroup.tid = dict[@"tid"];
+                newsGroup.title = dict[@"tname"];
+                newsGroup.type = NENNewsGroupTypeBottom;
+                [self.newsGroups addObject:newsGroup];
+            }
+        }];
+        // 刷新listView
+        self.newsGroupDropdownListView.newsGroups = self.newsGroups;
+        // 保存本地列表
+        [NENNewsGroupTool saveNewsGroups:self.newsGroups];
+    } failure:^(NSError *error) {
+        NSLog(@"%@", error);
+    }];
 }
 
 #pragma mark - 初始化方法

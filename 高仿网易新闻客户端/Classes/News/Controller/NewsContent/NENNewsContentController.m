@@ -20,6 +20,7 @@
 #import "NENNewsDetailController.h"
 #import "NENNewsPhotosetController.h"
 #import "MBProgressHUD+MJ.h"
+#import "NENNewsContentTool.h"
 
 @interface NENNewsContentController () <NENContentHeaderDelegate>
 @property (nonatomic, strong) NSMutableArray *newsContents;
@@ -63,14 +64,46 @@
     // 保证tableView在状态栏上方
     self.tableView.contentInset = UIEdgeInsetsMake(0, 0, 44, 0);
     
-    // 下拉刷新
-    self.tableView.header = [MJRefreshNormalHeader headerWithRefreshingTarget:self refreshingAction:@selector(loadNewData)];
+    // 加载缓存数据
+    NSArray *newsContens = [NENNewsContentTool newsContentsWithTid:self.newsGroup.tid];
+    if (newsContens.count)
+    {
+        self.newsContents = [NENNewsContent objectArrayWithKeyValuesArray:newsContens];
+        if (self.newsContents.count >= 1) {
+            NENNewsContent *newsContent = self.newsContents[0];
+            if (newsContent.hasAD && newsContent.hasHead) {
+                NENNewsAD *newsAD = [[NENNewsAD alloc] init];
+                newsAD.title = newsContent.title;
+                newsAD.subtitle = newsContent.subtitle;
+                newsAD.imgsrc = newsContent.imgsrc;
+                newsAD.url = newsContent.skipID;
+                [self.newsAds addObject:newsAD];
+                [self.newsContents removeObject:newsContent];
+                
+                // 请求滚动数据
+                if (self.newsGroup.adUrl) {
+                    [NENHttpTool get:[NSString stringWithFormat:@"%@/0-3.html", self.newsGroup.adUrl] params:nil success:^(NSDictionary *response) {
+                        NSString *key = [response.keyEnumerator nextObject];
+                        NSMutableArray *newsADs = [NENNewsAD objectArrayWithKeyValuesArray:response[key]];
+                        [self.newsAds addObjectsFromArray:newsADs];
+                        self.contentHeader.newsADs = self.newsAds;
+                    } failure:^(NSError *error) {
+                        NSLog(@"%@", error);
+                    }];
+                } else {
+                    self.contentHeader.newsADs = self.newsAds;
+                }
+            }
+        }
+        [self.tableView reloadData];
+    }
     
-    // 上拉刷新
-    self.tableView.footer = [MJRefreshAutoNormalFooter footerWithRefreshingTarget:self refreshingAction:@selector(loadMoreData)];
-
-    // 开始刷新
-    [self.tableView.header beginRefreshing];
+    // 集成上拉刷新
+    [self setupUpRefresh];
+    
+    // 集成下拉刷新
+    [self setupDownRefresh];
+    
 }
 
 #pragma mark - 监听方法
@@ -83,6 +116,8 @@
     NSString *url = [NSString stringWithFormat:@"%@/0-20.html", self.newsGroup.url];
     [NENHttpTool get:url params:nil success:^(NSDictionary *response) {
         NSString *key = [response.keyEnumerator nextObject];
+        // 缓存数据
+        [NENNewsContentTool resetNewsContents:response[key] tid:key];
         self.newsContents = [NENNewsContent objectArrayWithKeyValuesArray:response[key]];
         
 #warning 此处要改！！
@@ -131,6 +166,8 @@
     NSString *url = [NSString stringWithFormat:@"%@/%ld-20.html", self.newsGroup.url, self.newsContents.count];
     [NENHttpTool get:url params:nil success:^(NSDictionary *response) {
         NSString *key = [response.keyEnumerator nextObject];
+        // 缓存数据
+        [NENNewsContentTool saveNewsContents:response[key] tid:key number:20];
         NSMutableArray *newsContents = [NENNewsContent objectArrayWithKeyValuesArray:response[key]];
         // 返回的数据有可能大于20条，只取20条，要不然会导致后续请求请求不到数据
         if (newsContents.count > 20) {
@@ -139,6 +176,7 @@
             range.length = newsContents.count - 20;
             [newsContents removeObjectsInRange:range];
         }
+        
         [self.newsContents addObjectsFromArray:newsContents];
         
         [self.tableView reloadData];
@@ -203,6 +241,17 @@
 }
 
 #pragma mark - 其他方法
+- (void)setupUpRefresh
+{
+    self.tableView.footer = [MJRefreshAutoNormalFooter footerWithRefreshingTarget:self refreshingAction:@selector(loadMoreData)];
+}
+
+- (void)setupDownRefresh
+{
+    self.tableView.header = [MJRefreshNormalHeader headerWithRefreshingTarget:self refreshingAction:@selector(loadNewData)];
+    [self.tableView.header beginRefreshing];
+}
+
 - (void)showNewsDetail:(NSUInteger)index
 {
     NENNewsDetailController *detailVC = [[NENNewsDetailController alloc] init];

@@ -13,9 +13,11 @@ typedef NS_ENUM(NSUInteger, NENNewsGroupType) {
     NENNewsGroupTypeBottom,
 };
 
-@interface NENNewsGroup : NSObject
+@interface NENNewsGroup : NSObject <NSCoding>
 @property (nonatomic, copy) NSString *title;
-@property (nonatomic, copy) NSString *url;
-@property (nonatomic, copy) NSString *adUrl;
+@property (nonatomic, copy) NSString *tid;
+@property (nonatomic, assign, getter=isHeadLine) BOOL headLine;
+@property (nonatomic, copy, readonly) NSString *url;
+@property (nonatomic, copy, readonly) NSString *adUrl;
 @property (nonatomic, assign) NENNewsGroupType type;
 @end

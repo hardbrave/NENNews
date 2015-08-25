@@ -153,6 +153,21 @@
 {
     _newsGroups = newsGroups;
     
+    // 保存之前可能选中的标题
+    NSString *selectedTitle = _selectedItem.newsGroup.title;
+    
+    // 清空之前可能存在的数据
+    [self.topTitleItemList removeAllObjects];
+    [self.bottomTitleItemList removeAllObjects];
+    [self.topBackgroundItemList removeAllObjects];
+    [self.bottomBackgroundItemList removeAllObjects];
+    [self.topView.subviews enumerateObjectsUsingBlock:^(UIView *subView, NSUInteger idx, BOOL *stop) {
+        [subView removeFromSuperview];
+    }];
+    [self.bottomView.subviews enumerateObjectsUsingBlock:^(UIView *subView, NSUInteger idx, BOOL *stop) {
+        [subView removeFromSuperview];
+    }];
+    
     [newsGroups enumerateObjectsUsingBlock:^(NENNewsGroup *newsGroup, NSUInteger idx, BOOL *stop) {
         if (newsGroup.type == NENNewsGroupTypeTop) {
             // 背景
@@ -183,6 +198,12 @@
         }
 
     }];
+    
+    // 还原之前可能选中的标题
+    [self selectItem:selectedTitle];
+    
+    // 强制布局
+    [self setNeedsLayout];
 }
 
 - (NSArray *)topNewsGroup
