@@ -24,7 +24,7 @@ static FMDatabase *_db;
 }
 
 #pragma mark - 公开方法
-+ (NSArray *)newsContentsWithTid:(NSString *)tid
++ (NSMutableArray *)newsContentsWithTid:(NSString *)tid
 {
     FMResultSet *set = [_db executeQuery:@"SELECT * FROM t_news_contents WHERE tid = ?", tid];
     NSMutableArray *newsContents = [NSMutableArray array];

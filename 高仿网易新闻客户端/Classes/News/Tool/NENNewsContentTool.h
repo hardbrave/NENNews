@@ -9,7 +9,7 @@
 #import <Foundation/Foundation.h>
 
 @interface NENNewsContentTool : NSObject
-+ (NSArray *)newsContentsWithTid:(NSString *)tid;
++ (NSMutableArray *)newsContentsWithTid:(NSString *)tid;
 + (void)resetNewsContents:(NSArray *)newsContents tid:(NSString *)tid;
 + (void)saveNewsContents:(NSArray *)newsContents tid:(NSString *)tid number:(NSUInteger)num;
 @end

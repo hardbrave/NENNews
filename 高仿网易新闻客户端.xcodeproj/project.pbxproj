@@ -102,6 +102,10 @@
 		376128731B872DCF00CC354F /* NENNewsPostFrame.m in Sources */ = {isa = PBXBuildFile; fileRef = 376128721B872DCF00CC354F /* NENNewsPostFrame.m */; };
 		376128761B873BA300CC354F /* NSString+reply.m in Sources */ = {isa = PBXBuildFile; fileRef = 376128751B873BA300CC354F /* NSString+reply.m */; };
 		376128791B87482D00CC354F /* NENNewsAD.m in Sources */ = {isa = PBXBuildFile; fileRef = 376128781B87482D00CC354F /* NENNewsAD.m */; };
+		377CCE1C1B8C89E5004A35C9 /* NENTopImageContentViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 377CCE1A1B8C89E5004A35C9 /* NENTopImageContentViewCell.m */; };
+		377CCE1D1B8C89E5004A35C9 /* NENTopImageContentViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 377CCE1B1B8C89E5004A35C9 /* NENTopImageContentViewCell.xib */; };
+		377CCE211B8C89F9004A35C9 /* NENTopNewsContentViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 377CCE1F1B8C89F9004A35C9 /* NENTopNewsContentViewCell.m */; };
+		377CCE221B8C89F9004A35C9 /* NENTopNewsContentViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 377CCE201B8C89F9004A35C9 /* NENTopNewsContentViewCell.xib */; };
 		37926B901B77399B00FCB89B /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 37926B8F1B77399B00FCB89B /* main.m */; };
 		37926BAA1B77399B00FCB89B /* _________Tests.m in Sources */ = {isa = PBXBuildFile; fileRef = 37926BA91B77399B00FCB89B /* _________Tests.m */; };
 		37926BD41B773A9900FCB89B /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 37926BC11B773A9900FCB89B /* AppDelegate.m */; };
@@ -336,6 +340,12 @@
 		376128751B873BA300CC354F /* NSString+reply.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+reply.m"; sourceTree = "<group>"; };
 		376128771B87482D00CC354F /* NENNewsAD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NENNewsAD.h; sourceTree = "<group>"; };
 		376128781B87482D00CC354F /* NENNewsAD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NENNewsAD.m; sourceTree = "<group>"; };
+		377CCE191B8C89E5004A35C9 /* NENTopImageContentViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NENTopImageContentViewCell.h; sourceTree = "<group>"; };
+		377CCE1A1B8C89E5004A35C9 /* NENTopImageContentViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NENTopImageContentViewCell.m; sourceTree = "<group>"; };
+		377CCE1B1B8C89E5004A35C9 /* NENTopImageContentViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NENTopImageContentViewCell.xib; sourceTree = "<group>"; };
+		377CCE1E1B8C89F9004A35C9 /* NENTopNewsContentViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NENTopNewsContentViewCell.h; sourceTree = "<group>"; };
+		377CCE1F1B8C89F9004A35C9 /* NENTopNewsContentViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NENTopNewsContentViewCell.m; sourceTree = "<group>"; };
+		377CCE201B8C89F9004A35C9 /* NENTopNewsContentViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NENTopNewsContentViewCell.xib; sourceTree = "<group>"; };
 		37926B8A1B77399B00FCB89B /* 高仿网易新闻客户端.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "高仿网易新闻客户端.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		37926B8E1B77399B00FCB89B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		37926B8F1B77399B00FCB89B /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -492,6 +502,12 @@
 				37EDD2441B802E0100813D79 /* NENContentHeaderCell.h */,
 				37EDD2451B802E0100813D79 /* NENContentHeaderCell.m */,
 				37EDD2521B81B5D700813D79 /* NENContentHeaderCell.xib */,
+				377CCE191B8C89E5004A35C9 /* NENTopImageContentViewCell.h */,
+				377CCE1A1B8C89E5004A35C9 /* NENTopImageContentViewCell.m */,
+				377CCE1B1B8C89E5004A35C9 /* NENTopImageContentViewCell.xib */,
+				377CCE1E1B8C89F9004A35C9 /* NENTopNewsContentViewCell.h */,
+				377CCE1F1B8C89F9004A35C9 /* NENTopNewsContentViewCell.m */,
+				377CCE201B8C89F9004A35C9 /* NENTopNewsContentViewCell.xib */,
 			);
 			path = NewsContent;
 			sourceTree = "<group>";
@@ -1271,8 +1287,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				377CCE1D1B8C89E5004A35C9 /* NENTopImageContentViewCell.xib in Resources */,
 				37EDD2531B81B5D700813D79 /* NENContentHeaderCell.xib in Resources */,
 				37EDD2511B81B0CF00813D79 /* NENContentHeader.xib in Resources */,
+				377CCE221B8C89F9004A35C9 /* NENTopNewsContentViewCell.xib in Resources */,
 				3701A7D31B8C16C200E0D325 /* NENNewsCommentMaskView.xib in Resources */,
 				375A9A6E1B8B405F00749371 /* MBProgressHUD.bundle in Resources */,
 				371DB9241B7B754500063F64 /* NENNewsContentViewCell.xib in Resources */,
@@ -1322,6 +1340,7 @@
 				3701A7E61B8C178300E0D325 /* FMDatabase.m in Sources */,
 				3761282A1B86CD3600CC354F /* NENNewsNormalComment.m in Sources */,
 				37926BE61B7742D500FCB89B /* NENDiscoverViewController.m in Sources */,
+				377CCE1C1B8C89E5004A35C9 /* NENTopImageContentViewCell.m in Sources */,
 				37D482ED1B8014D30057F819 /* NENNewsGroupEditButton.m in Sources */,
 				3701A7D41B8C16C200E0D325 /* NENNewsCommentSectionView.m in Sources */,
 				3701A7D21B8C16C200E0D325 /* NENNewsCommentMaskView.m in Sources */,
@@ -1342,6 +1361,7 @@
 				371DB8BF1B7B69C200063F64 /* MJRefreshAutoStateFooter.m in Sources */,
 				371DB8C21B7B69C200063F64 /* MJRefreshBackStateFooter.m in Sources */,
 				37926BF21B77432400FCB89B /* NENMediaViewController.m in Sources */,
+				377CCE211B8C89F9004A35C9 /* NENTopNewsContentViewCell.m in Sources */,
 				37D482E91B8014D30057F819 /* NENNewsGroupBar.m in Sources */,
 				371DB8F41B7B69F600063F64 /* SDWebImageManager.m in Sources */,
 				3761281A1B86CD1600CC354F /* NENNewsPhotosetCell.m in Sources */,

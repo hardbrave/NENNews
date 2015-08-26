@@ -36,13 +36,6 @@
     [self.collView registerNib:[UINib nibWithNibName:@"NENContentHeaderCell" bundle:nil] forCellWithReuseIdentifier:KNENContentCellID];
 }
 
-- (void)didAddSubview:(UIView *)subview
-{
-    // 将collectionView移动到中间分组（实现无限滚动）
-    NSIndexPath *indexpath = [NSIndexPath indexPathForItem:0 inSection:kNENContentCellSections * 0.5];
-    [self.collView scrollToItemAtIndexPath:indexpath atScrollPosition:UICollectionViewScrollPositionNone animated:NO];
-}
-
 - (void)layoutSubviews
 {
     [super layoutSubviews];
@@ -71,6 +64,10 @@
         self.titleLabel.text = [newsADs[0] title];
         [self.collView reloadData];
     }
+    
+    // 将collectionView移动到中间分组（实现无限滚动）
+    NSIndexPath *indexpath = [NSIndexPath indexPathForItem:0 inSection:kNENContentCellSections * 0.5];
+    [self.collView scrollToItemAtIndexPath:indexpath atScrollPosition:UICollectionViewScrollPositionNone animated:NO];
 }
 
 #pragma mark - UICollectionViewDataSource

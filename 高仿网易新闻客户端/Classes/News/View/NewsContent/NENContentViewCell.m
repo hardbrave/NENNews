@@ -12,6 +12,8 @@
 #import "NENBigImageContentViewCell.h"
 #import "NENNewsContentViewCell.h"
 #import "NENImagesContentViewCell.h"
+#import "NENTopImageContentViewCell.h"
+#import "NENTopNewsContentViewCell.h"
 
 @implementation NENContentViewCell
 #pragma mark - 初始化方法
@@ -36,6 +38,10 @@
             cell = [NENImagesContentViewCell cell];
         } else if ([identifier isEqualToString:@"bigImageCell"]) {
             cell = [NENBigImageContentViewCell cell];
+        } else if ([identifier isEqualToString:@"topImageCell"]) {
+            cell = [NENTopImageContentViewCell cell];
+        } else if ([identifier isEqualToString:@"topNewsCell"]) {
+            cell = [NENTopNewsContentViewCell cell];
         }
     }
     return cell;
@@ -51,7 +57,11 @@
 #pragma mark - 公开方法
 + (NSString *)identifierForNewsContent:(NENNewsContent *)newsContent
 {
-    if (newsContent.imgType) {
+    if (newsContent.hasHead && newsContent.photosetID) {
+        return @"topImageCell";
+    } else if (newsContent.hasHead){
+        return @"topNewsCell";
+    } else if (newsContent.imgType) {
         return @"bigImageCell";
     } else if (newsContent.imgextra) {
         return @"imagesCell";
@@ -73,6 +83,10 @@
         return [NENImagesContentViewCell height];
     } else if ([identifier isEqualToString:@"bigImageCell"]) {
         return [NENBigImageContentViewCell height];
+    } else if ([identifier isEqualToString:@"topImageCell"]) {
+        return [NENTopImageContentViewCell height];
+    } else if ([identifier isEqualToString:@"topNewsCell"]) {
+        return [NENTopNewsContentViewCell height];
     } else {
         return 0;
     }

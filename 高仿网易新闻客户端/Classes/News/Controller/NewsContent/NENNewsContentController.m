@@ -59,6 +59,10 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    // 去掉tableView顶部空白区域
+    self.tableView.tableHeaderView = [[UIView alloc] initWithFrame:CGRectMake(0.0f, 0.0f, 0.0f, 0.01f)];
+    // 去掉tableView底部空白区域
+    self.tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectMake(0.0f, 0.0f, 0.0f, 0.01f)];
     // 取消分割线
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     // 保证tableView在状态栏上方
@@ -66,37 +70,8 @@
     
     // 加载缓存数据
     NSArray *newsContens = [NENNewsContentTool newsContentsWithTid:self.newsGroup.tid];
-    if (newsContens.count)
-    {
-        self.newsContents = [NENNewsContent objectArrayWithKeyValuesArray:newsContens];
-        if (self.newsContents.count >= 1) {
-            NENNewsContent *newsContent = self.newsContents[0];
-            if (newsContent.hasAD && newsContent.hasHead) {
-                NENNewsAD *newsAD = [[NENNewsAD alloc] init];
-                newsAD.title = newsContent.title;
-                newsAD.subtitle = newsContent.subtitle;
-                newsAD.imgsrc = newsContent.imgsrc;
-                newsAD.url = newsContent.skipID;
-                [self.newsAds addObject:newsAD];
-                [self.newsContents removeObject:newsContent];
-                
-                // 请求滚动数据
-                if (self.newsGroup.adUrl) {
-                    [NENHttpTool get:[NSString stringWithFormat:@"%@/0-3.html", self.newsGroup.adUrl] params:nil success:^(NSDictionary *response) {
-                        NSString *key = [response.keyEnumerator nextObject];
-                        NSMutableArray *newsADs = [NENNewsAD objectArrayWithKeyValuesArray:response[key]];
-                        [self.newsAds addObjectsFromArray:newsADs];
-                        self.contentHeader.newsADs = self.newsAds;
-                    } failure:^(NSError *error) {
-                        NSLog(@"%@", error);
-                    }];
-                } else {
-                    self.contentHeader.newsADs = self.newsAds;
-                }
-            }
-        }
-        [self.tableView reloadData];
-    }
+    self.newsContents = [NENNewsContent objectArrayWithKeyValuesArray:newsContens];
+    [self.tableView reloadData];
     
     // 集成上拉刷新
     [self setupUpRefresh];
@@ -109,10 +84,6 @@
 #pragma mark - 监听方法
 - (void)loadNewData
 {
-    if (!self.newsGroup.url) {
-        return;
-    }
-    
     NSString *url = [NSString stringWithFormat:@"%@/0-20.html", self.newsGroup.url];
     [NENHttpTool get:url params:nil success:^(NSDictionary *response) {
         NSString *key = [response.keyEnumerator nextObject];
@@ -120,33 +91,32 @@
         [NENNewsContentTool resetNewsContents:response[key] tid:key];
         self.newsContents = [NENNewsContent objectArrayWithKeyValuesArray:response[key]];
         
-#warning 此处要改！！
-        if (self.newsContents.count >= 1) {
+        if (self.newsContents.count >= 1 && self.newsGroup.isHeadLine) {
+            // 清空已有数据
+            [self.newsAds removeAllObjects];
+            
+            // 取出第一个newsContent对象，并将它转换为一个newsAD对象
             NENNewsContent *newsContent = self.newsContents[0];
-            if (newsContent.hasAD && newsContent.hasHead) {
-                NENNewsAD *newsAD = [[NENNewsAD alloc] init];
-                newsAD.title = newsContent.title;
-                newsAD.subtitle = newsContent.subtitle;
-                newsAD.imgsrc = newsContent.imgsrc;
-                newsAD.url = newsContent.skipID;
-                [self.newsAds addObject:newsAD];
-                [self.newsContents removeObject:newsContent];
+            NENNewsAD *newsAD = [[NENNewsAD alloc] init];
+            newsAD.title = newsContent.title;
+            newsAD.subtitle = newsContent.subtitle;
+            newsAD.imgsrc = newsContent.imgsrc;
+            newsAD.url = newsContent.skipID;
+            [self.newsAds addObject:newsAD];
+            [self.newsContents removeObject:newsContent];
                 
-                // 请求滚动数据
-                if (self.newsGroup.adUrl) {
-                    [NENHttpTool get:[NSString stringWithFormat:@"%@/0-3.html", self.newsGroup.adUrl] params:nil success:^(NSDictionary *response) {
-                        NSString *key = [response.keyEnumerator nextObject];
-                        NSMutableArray *newsADs = [NENNewsAD objectArrayWithKeyValuesArray:response[key]];
-                        [self.newsAds addObjectsFromArray:newsADs];
-                        self.contentHeader.newsADs = self.newsAds;
-                    } failure:^(NSError *error) {
-                        NSLog(@"%@", error);
-                    }];
-                } else {
-                    self.contentHeader.newsADs = self.newsAds;
-                }
-            }
+            // 请求滚动数据
+            NSString *url = [NSString stringWithFormat:@"%@/0-3.html", self.newsGroup.adUrl];
+            [NENHttpTool get:url params:nil success:^(NSDictionary *response) {
+                NSString *key = [response.keyEnumerator nextObject];
+                NSMutableArray *newsADs = [NENNewsAD objectArrayWithKeyValuesArray:response[key]];
+                [self.newsAds addObjectsFromArray:newsADs];
+                self.contentHeader.newsADs = self.newsAds;
+            } failure:^(NSError *error) {
+                NSLog(@"%@", error);
+            }];
         }
+        
         [self.tableView reloadData];
         [self.tableView.header endRefreshing];
     } failure:^(NSError *error) {
@@ -158,11 +128,6 @@
 
 - (void)loadMoreData
 {
-    if (!self.newsGroup.url) {
-        return;
-    }
-    
-    NSLog(@"%ld", self.newsContents.count);
     NSString *url = [NSString stringWithFormat:@"%@/%ld-20.html", self.newsGroup.url, self.newsContents.count];
     [NENHttpTool get:url params:nil success:^(NSDictionary *response) {
         NSString *key = [response.keyEnumerator nextObject];
@@ -215,7 +180,11 @@
 
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
 {
-    return 215;
+    if (self.newsGroup.isHeadLine) {
+        return 215;
+    } else {
+        return 0;
+    }
 }
 
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
