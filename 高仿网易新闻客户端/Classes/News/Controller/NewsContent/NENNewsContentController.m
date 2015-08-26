@@ -68,9 +68,26 @@
     // 保证tableView在状态栏上方
     self.tableView.contentInset = UIEdgeInsetsMake(0, 0, 44, 0);
     
+    self.automaticallyAdjustsScrollViewInsets = NO;
+    
     // 加载缓存数据
     NSArray *newsContens = [NENNewsContentTool newsContentsWithTid:self.newsGroup.tid];
     self.newsContents = [NENNewsContent objectArrayWithKeyValuesArray:newsContens];
+    if (self.newsContents.count >= 1 && self.newsGroup.isHeadLine) {
+        // 清空已有数据
+        [self.newsAds removeAllObjects];
+        
+        // 取出第一个newsContent对象，并将它转换为一个newsAD对象
+        NENNewsContent *newsContent = self.newsContents[0];
+        NENNewsAD *newsAD = [self newsADWithNewsContent:newsContent];
+        [self.newsAds addObject:newsAD];
+        [self.newsContents removeObject:newsContent];
+        
+        // 加载缓存的滚动数据
+        NSMutableArray *newsADs = [NENNewsAD objectArrayWithKeyValuesArray:[NENNewsContentTool newsADs]];
+        [self.newsAds addObjectsFromArray:newsADs];
+        self.contentHeader.newsADs = self.newsAds;
+    }
     [self.tableView reloadData];
     
     // 集成上拉刷新
@@ -97,11 +114,7 @@
             
             // 取出第一个newsContent对象，并将它转换为一个newsAD对象
             NENNewsContent *newsContent = self.newsContents[0];
-            NENNewsAD *newsAD = [[NENNewsAD alloc] init];
-            newsAD.title = newsContent.title;
-            newsAD.subtitle = newsContent.subtitle;
-            newsAD.imgsrc = newsContent.imgsrc;
-            newsAD.url = newsContent.skipID;
+            NENNewsAD *newsAD = [self newsADWithNewsContent:newsContent];
             [self.newsAds addObject:newsAD];
             [self.newsContents removeObject:newsContent];
                 
@@ -109,6 +122,8 @@
             NSString *url = [NSString stringWithFormat:@"%@/0-3.html", self.newsGroup.adUrl];
             [NENHttpTool get:url params:nil success:^(NSDictionary *response) {
                 NSString *key = [response.keyEnumerator nextObject];
+                // 缓存数据
+                [NENNewsContentTool resetNewsADs:response[key]];
                 NSMutableArray *newsADs = [NENNewsAD objectArrayWithKeyValuesArray:response[key]];
                 [self.newsAds addObjectsFromArray:newsADs];
                 self.contentHeader.newsADs = self.newsAds;
@@ -116,7 +131,6 @@
                 NSLog(@"%@", error);
             }];
         }
-        
         [self.tableView reloadData];
         [self.tableView.header endRefreshing];
     } failure:^(NSError *error) {
@@ -244,6 +258,16 @@
     NSArray *photoSetIDs = [[photosetID substringFromIndex:4] componentsSeparatedByString:@"|"];
     NSString *url = [NSString stringWithFormat:@"http://c.m.163.com/photo/api/set/%@/%@.json", photoSetIDs[0],photoSetIDs[1]];
     return url;
+}
+
+- (NENNewsAD *)newsADWithNewsContent:(NENNewsContent *)newsContent
+{
+    NENNewsAD *newsAD = [[NENNewsAD alloc] init];
+    newsAD.title = newsContent.title;
+    newsAD.subtitle = newsContent.subtitle;
+    newsAD.imgsrc = newsContent.imgsrc;
+    newsAD.url = newsContent.skipID;
+    return newsAD;
 }
 
 @end

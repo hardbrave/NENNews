@@ -21,6 +21,7 @@ static FMDatabase *_db;
     
     // 2.创表
     [_db executeUpdate:@"CREATE TABLE IF NOT EXISTS t_news_contents (id integer PRIMARY KEY, content blob NOT NULL, tid text NOT NULL);"];
+    [_db executeUpdate:@"CREATE TABLE IF NOT EXISTS t_news_ads (id integer PRIMARY KEY, ad blob NOT NULL);"];
 }
 
 #pragma mark - 公开方法
@@ -58,6 +59,40 @@ static FMDatabase *_db;
             *stop = YES;
         }
         
+    }];
+    [_db commit];
+}
+
++ (NSMutableArray *)newsADs
+{
+    FMResultSet *set = [_db executeQuery:@"SELECT * FROM t_news_ads"];
+    NSMutableArray *newsADs = [NSMutableArray array];
+    while (set.next) {
+        NSData *newsADData = [set objectForColumnName:@"ad"];
+        NSDictionary *newsAD = [NSKeyedUnarchiver unarchiveObjectWithData:newsADData];
+        [newsADs addObject:newsAD];
+    }
+    return newsADs;
+
+}
+
++ (void)resetNewsADs:(NSMutableArray *)newsADs
+{
+    [_db beginTransaction];
+    [_db executeUpdate:@"DELETE FROM t_news_ads"];
+    [newsADs enumerateObjectsUsingBlock:^(NSDictionary *newsAD, NSUInteger idx, BOOL *stop) {
+        NSData *newsADData = [NSKeyedArchiver archivedDataWithRootObject:newsAD];
+        [_db executeUpdate:@"INSERT INTO t_news_ads(ad) VALUES (?)", newsADData];
+    }];
+    [_db commit];
+}
+
++ (void)saveNewsADs:(NSMutableArray *)newsADs
+{
+    [_db beginTransaction];
+    [newsADs enumerateObjectsUsingBlock:^(NSDictionary *newsAD, NSUInteger idx, BOOL *stop) {
+        NSData *newsADData = [NSKeyedArchiver archivedDataWithRootObject:newsAD];
+        [_db executeUpdate:@"INSERT INTO t_news_ads(ad) VALUES (?)", newsADData];
     }];
     [_db commit];
 }

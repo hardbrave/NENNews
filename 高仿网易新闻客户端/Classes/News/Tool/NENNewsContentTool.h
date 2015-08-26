@@ -12,4 +12,8 @@
 + (NSMutableArray *)newsContentsWithTid:(NSString *)tid;
 + (void)resetNewsContents:(NSArray *)newsContents tid:(NSString *)tid;
 + (void)saveNewsContents:(NSArray *)newsContents tid:(NSString *)tid number:(NSUInteger)num;
+
++ (NSMutableArray *)newsADs;
++ (void)resetNewsADs:(NSMutableArray *)newsADs;
++ (void)saveNewsADs:(NSMutableArray *)newsADs;
 @end

@@ -36,13 +36,14 @@
     [self.collView registerNib:[UINib nibWithNibName:@"NENContentHeaderCell" bundle:nil] forCellWithReuseIdentifier:KNENContentCellID];
 }
 
-- (void)layoutSubviews
+- (void)setFrame:(CGRect)frame
 {
-    [super layoutSubviews];
-    
     // 保证collectionView以及内部collectionCell的大小与父控件大小一致
     UICollectionViewFlowLayout *layout = (UICollectionViewFlowLayout *)self.collView.collectionViewLayout;
-    layout.itemSize = self.collView.size;
+    layout.itemSize = CGSizeMake(frame.size.width, frame.size.height - 32);
+    
+    [super setFrame:frame];
+    
 }
 
 #pragma mark - 属性方法
@@ -50,20 +51,12 @@
 {
     _newsADs = [newsADs copy];
     
-    if (newsADs.count > 1) {
-        self.pageControl.hidden = NO;
-        self.iconView.hidden = NO;
-        self.collView.scrollEnabled = YES;
-        self.pageControl.numberOfPages = newsADs.count;
-        self.pageControl.currentPage = 0;
-        self.titleLabel.text = [newsADs[0] title];
-        [self.collView reloadData];
-    } else if (newsADs.count == 1) {
-        self.iconView.hidden = NO;
-        self.collView.scrollEnabled = NO;
-        self.titleLabel.text = [newsADs[0] title];
-        [self.collView reloadData];
-    }
+    self.pageControl.hidden = NO;
+    self.iconView.hidden = NO;
+    self.pageControl.numberOfPages = newsADs.count;
+    self.pageControl.currentPage = 0;
+    self.titleLabel.text = [newsADs[0] title];
+    [self.collView reloadData];
     
     // 将collectionView移动到中间分组（实现无限滚动）
     NSIndexPath *indexpath = [NSIndexPath indexPathForItem:0 inSection:kNENContentCellSections * 0.5];
