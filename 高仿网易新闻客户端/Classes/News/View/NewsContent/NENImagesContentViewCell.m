@@ -34,15 +34,17 @@
     
     self.titleLabel.text = newsContent.title;
     
-    NSString *replyString = [NSString replyString:[newsContent.replyCount intValue]];
-    if (replyString) {
-        self.replyLabel.hidden = NO;
-        self.replyBackground.hidden = NO;
-        self.replyLabel.text = replyString;
-    } else {
-        self.replyLabel.hidden = YES;
-        self.replyBackground.hidden = YES;
-    }
+//    NSString *replyString = [NSString replyString:[newsContent.replyCount intValue]];
+//    if (replyString) {
+//        self.replyLabel.hidden = NO;
+//        self.replyBackground.hidden = NO;
+//        self.replyLabel.text = replyString;
+//    } else {
+//        self.replyLabel.hidden = YES;
+//        self.replyBackground.hidden = YES;
+//    }
+    self.replyLabel.hidden = YES;
+    self.replyBackground.hidden = YES;
     
     // 多图cell
     UIImage *placeholderImage = [UIImage imageNamed:@"photoview_image_default_white"];
