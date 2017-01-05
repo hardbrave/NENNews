@@ -13,14 +13,10 @@
 
 ## Demo
 #### 新闻列表
-![image](https://github.com/hardbrave/nennews/raw/master/snapshot/home.png)
+![image](https://github.com/hardbrave/nennews/raw/master/snapshot/home.gif)
 
 #### 嵌套评论
-![image](https://github.com/hardbrave/nennews/raw/master/snapshot/comment.png)
-
-#### 新闻详情
-![image](https://github.com/hardbrave/nennews/raw/master/snapshot/detail-1.png)
-![image](https://github.com/hardbrave/nennews/raw/master/snapshot/detail-2.png)
+![image](https://github.com/hardbrave/nennews/raw/master/snapshot/comment.gif)
 
 #### 动态新闻分组栏调整
 ![image](https://github.com/hardbrave/nennews/raw/master/snapshot/topbar.gif)
